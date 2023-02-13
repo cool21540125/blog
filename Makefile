@@ -6,7 +6,7 @@ build:
 
 .PHONY: s3
 s3:
-	aws s3 sync public/ s3://blog.tonychoucc.com \
+	aws s3 sync public/ s3://blog2.tonychoucc.com \
 		--delete \
 		--exclude ".DS_Store" \
 		--profile tonychoucc
