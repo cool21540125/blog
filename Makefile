@@ -4,9 +4,9 @@ build:
 	rm -rf public && hugo
 
 
-.PHONY: tos3
-tos3:
-	aws s3 sync public/ s3://blog2023.tonychoucc.com \
+.PHONY: s3
+s3:
+	aws s3 sync public/ s3://blog.tonychoucc.com \
 		--delete \
 		--exclude ".DS_Store" \
 		--profile tonychoucc
@@ -20,6 +20,6 @@ dev:
 .PHONY: purge
 purge:
 	aws cloudfront create-invalidation \
-		--distribution-id "ESDXSGFLLAWF7" \
+		--distribution-id "E31VLMVJPNIG00" \
 		--paths "/*" \
 		--profile tonychoucc

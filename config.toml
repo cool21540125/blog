@@ -12,7 +12,7 @@ disqusShortname = "blog-tonychoucc-com"
 googleAnalytics = "UA-128885517-3"
 
 [Params]
- homeTitle = "半路出家的軟體人" # Set a different text for the header on the home page
+ homeTitle = "沒有任何金融天份的軟體人" # Set a different text for the header on the home page
   subtitle = "朝向 SRE 邁進中"
   mainSections = ["post","posts"]
   logo = "img/avatar-icon.png" # Expecting square dimensions
