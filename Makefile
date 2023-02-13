@@ -17,6 +17,13 @@ dev:
 	hugo server -D
 
 
+.PHONE: nginx
+nginx:
+	rm -rf public && \
+	hugo && \
+	docker run -p 80:80 --rm -v "$(pwd)/public:/usr/share/nginx/html/" nginx:alpine
+
+
 .PHONY: purge
 purge:
 	aws cloudfront create-invalidation \

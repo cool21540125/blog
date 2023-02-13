@@ -1,6 +1,6 @@
 baseurl = "https://blog.tonychoucc.com"
 DefaultContentLanguage = "en"
-title = "Beautiful Hugo"
+title = "朝向 SRE 邁進中"
 theme = "beautifulhugo"
 pygmentsStyle = "trac"
 pygmentsUseClasses = true
@@ -12,11 +12,13 @@ disqusShortname = "blog-tonychoucc-com"
 googleAnalytics = "UA-128885517-3"
 
 [Params]
- homeTitle = "沒有任何金融天份的軟體人" # Set a different text for the header on the home page
-  subtitle = "朝向 SRE 邁進中"
+#  homeTitle = "朝向 SRE 邁進中123" # Set a different text for the header on the home page
+  subtitle = "Blog 荒廢了 2 年有了. Since 2023/02, 會不定期開始加東西"
   mainSections = ["post","posts"]
-  logo = "img/avatar-icon.png" # Expecting square dimensions
-  favicon = "img/favicon.ico"
+  logo = "images/virus.jpeg"
+  # logo = "img/avatar-icon.png" # Expecting square dimensions
+  favicon = "images/favicon.ico"
+  # favicon = "img/favicon.ico"
   dateFormat = "January 2, 2006"
   commit = false
   rss = true
