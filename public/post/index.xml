@@ -5,160 +5,248 @@
     <link>https://username.github.io/post/</link>
     <description>Recent content in Posts on Beautiful Hugo</description>
     <generator>Hugo -- gohugo.io</generator>
-    <managingEditor>youremail@domain.com (Some Person)</managingEditor>
-    <webMaster>youremail@domain.com (Some Person)</webMaster>
-    <lastBuildDate>Mon, 20 Mar 2017 00:00:00 +0000</lastBuildDate><atom:link href="https://username.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <managingEditor>cool21540125@gmail.com (Tony Chou)</managingEditor>
+    <webMaster>cool21540125@gmail.com (Tony Chou)</webMaster>
+    <lastBuildDate>Wed, 28 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://username.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Photoswipe Gallery Sample</title>
-      <link>https://username.github.io/post/2017-03-20-photoswipe-gallery-sample/</link>
-      <pubDate>Mon, 20 Mar 2017 00:00:00 +0000</pubDate>
-      <author>youremail@domain.com (Some Person)</author>
-      <guid>https://username.github.io/post/2017-03-20-photoswipe-gallery-sample/</guid>
-      <description>&lt;p&gt;Beautiful Hugo adds a few custom shortcodes created by &lt;a href=&#34;https://www.liwen.id.au/heg/&#34;&gt;Li-Wen Yip&lt;/a&gt; and &lt;a href=&#34;https://github.com/GjjvdBurg/HugoPhotoSwipe&#34;&gt;Gert-Jan van den Berg&lt;/a&gt; for making galleries with &lt;a href=&#34;http://photoswipe.com&#34;&gt;PhotoSwipe&lt;/a&gt; .&lt;/p&gt;
-
-
-
-&lt;div class=&#34;gallery caption-position-bottom caption-effect-fade hover-effect-zoom hover-transition&#34; itemscope itemtype=&#34;http://schema.org/ImageGallery&#34;&gt;
-	  
-  
-  &lt;link rel=&#34;stylesheet&#34; href=&#34;https://username.github.io/css/hugo-easy-gallery.css&#34; /&gt;
-  &lt;div class=&#34;box&#34; &gt;
-    &lt;figure  itemprop=&#34;associatedMedia&#34; itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-      &lt;div class=&#34;img&#34; style=&#34;background-image: url(&#39;https://username.github.io/img/hexagon-thumb.jpg&#39;);&#34;&gt;
-        &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://username.github.io/img/hexagon-thumb.jpg&#34; alt=&#34;/img/hexagon-thumb.jpg&#34;/&gt;
-      &lt;/div&gt;
-      &lt;a href=&#34;https://username.github.io/img/hexagon.jpg&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;
-    &lt;/figure&gt;
-  &lt;/div&gt;
-
-  
-  
-  &lt;div class=&#34;box&#34; &gt;
-    &lt;figure  itemprop=&#34;associatedMedia&#34; itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-      &lt;div class=&#34;img&#34; style=&#34;background-image: url(&#39;https://username.github.io/img/sphere-thumb.jpg&#39;);&#34;&gt;
-        &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://username.github.io/img/sphere-thumb.jpg&#34; alt=&#34;Sphere&#34;/&gt;
-      &lt;/div&gt;
-      &lt;a href=&#34;https://username.github.io/img/sphere.jpg&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;
-        &lt;figcaption&gt;
-            &lt;p&gt;Sphere&lt;/p&gt;
-        &lt;/figcaption&gt;
-    &lt;/figure&gt;
-  &lt;/div&gt;
-
-  
-  
-  &lt;div class=&#34;box&#34; &gt;
-    &lt;figure  itemprop=&#34;associatedMedia&#34; itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-      &lt;div class=&#34;img&#34; style=&#34;background-image: url(&#39;https://username.github.io/img/triangle-thumb.jpg&#39;);&#34;&gt;
-        &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://username.github.io/img/triangle-thumb.jpg&#34; alt=&#34;This is a long comment about a triangle&#34;/&gt;
-      &lt;/div&gt;
-      &lt;a href=&#34;https://username.github.io/img/triangle.jpg&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;
-        &lt;figcaption&gt;
-            &lt;p&gt;Triangle&lt;/p&gt;
-        &lt;/figcaption&gt;
-    &lt;/figure&gt;
-  &lt;/div&gt;
-
-
-&lt;/div&gt;</description>
+      <title>Python base image 切勿使用 alpine</title>
+      <link>https://username.github.io/post/2020-10-28-dont-use-alpine-image-for-python/</link>
+      <pubDate>Wed, 28 Oct 2020 00:00:00 +0000</pubDate>
+      <author>cool21540125@gmail.com (Tony Chou)</author>
+      <guid>https://username.github.io/post/2020-10-28-dont-use-alpine-image-for-python/</guid>
+      <description>&lt;p&gt;看了許多 docker 官網使用 python 做的範例, 經常看到使用 alpine base image.&lt;/p&gt;
+&lt;p&gt;使用過程發現 它(alpine) 真的很雷&lt;/p&gt;
+&lt;p&gt;本文大致說明為何&lt;/p&gt;</description>
     </item>
     
     <item>
-      <title>Big Image Sample</title>
-      <link>https://username.github.io/post/2017-03-07-bigimg-sample/</link>
-      <pubDate>Tue, 07 Mar 2017 00:00:00 +0000</pubDate>
-      <author>youremail@domain.com (Some Person)</author>
-      <guid>https://username.github.io/post/2017-03-07-bigimg-sample/</guid>
-      <description>&lt;p&gt;The image banners at the top of the page are refered to as &amp;ldquo;bigimg&amp;rdquo; in this theme. They are optional, and one more more can be specified. If more than one is specified, the images rotate every 10 seconds. In the front matter, bigimgs are specified using an array of hashes.&lt;/p&gt;</description>
+      <title>classmethod, staticmethod, instance method in Python</title>
+      <link>https://username.github.io/post/2020-09-21-class-static-instance_method/</link>
+      <pubDate>Mon, 21 Sep 2020 20:00:00 +0800</pubDate>
+      <author>cool21540125@gmail.com (Tony Chou)</author>
+      <guid>https://username.github.io/post/2020-09-21-class-static-instance_method/</guid>
+      <description>&lt;p&gt;超多超多的文章都在討論究竟 Python 裡頭的 staticmethod &amp;amp;&amp;amp; staticmethod &amp;amp;&amp;amp; instance method 差在哪邊?&lt;/p&gt;
+&lt;p&gt;可以參考 &lt;a href=&#34;https://stackoverflow.com/questions/136097/difference-between-staticmethod-and-classmethod&#34;&gt;這篇&lt;/a&gt;, &lt;a href=&#34;https://stackoverflow.com/questions/12179271/meaning-of-classmethod-and-staticmethod-for-beginner&#34;&gt;這篇&lt;/a&gt; 或 &lt;a href=&#34;https://stackoverflow.com/questions/12179271/meaning-of-classmethod-and-staticmethod-for-beginner/12179752#12179752&#34;&gt;這篇&lt;/a&gt;&amp;hellip;(以上都是好幾千個 upvote 的 Q&amp;amp;A), 半夜睡不著覺 而且對於知識狂熱的份子可以去好好讀它&amp;hellip;&lt;/p&gt;
+&lt;p&gt;底下就用 &amp;ldquo;我自己的理解&amp;rdquo; &lt;del&gt;來湊熱鬧&lt;/del&gt; 寫篇文章解說解說&lt;/p&gt;</description>
     </item>
     
     <item>
-      <title>Math Sample</title>
-      <link>https://username.github.io/post/2017-03-05-math-sample/</link>
-      <pubDate>Sun, 05 Mar 2017 00:00:00 +0000</pubDate>
-      <author>youremail@domain.com (Some Person)</author>
-      <guid>https://username.github.io/post/2017-03-05-math-sample/</guid>
-      <description>&lt;p&gt;KaTeX can be used to generate complex math formulas server-side.&lt;/p&gt;
-&lt;p&gt;$$
-\phi = \frac{(1+\sqrt{5})}{2} = 1.6180339887\cdots
-$$&lt;/p&gt;
-&lt;p&gt;Additional details can be found on &lt;a href=&#34;https://github.com/Khan/KaTeX&#34;&gt;GitHub&lt;/a&gt; or on the &lt;a href=&#34;http://tiddlywiki.com/plugins/tiddlywiki/katex/&#34;&gt;Wiki&lt;/a&gt;.&lt;/p&gt;</description>
+      <title>Unix like - Shebang Line</title>
+      <link>https://username.github.io/post/2020-03-07-shebang_line/</link>
+      <pubDate>Tue, 10 Mar 2020 00:00:00 +0800</pubDate>
+      <author>cool21540125@gmail.com (Tony Chou)</author>
+      <guid>https://username.github.io/post/2020-03-07-shebang_line/</guid>
+      <description>&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-py&#34; data-lang=&#34;py&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;ch&#34;&gt;#!/usr/bin/python&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 後續代碼&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;第一行, 稱之為 &lt;code&gt;shebang line&lt;/code&gt;, 至於他在幹嘛? 進來看看唄&lt;/p&gt;</description>
     </item>
     
     <item>
-      <title>Code Sample</title>
-      <link>https://username.github.io/post/2016-03-08-code-sample/</link>
-      <pubDate>Tue, 08 Mar 2016 00:00:00 +0000</pubDate>
-      <author>youremail@domain.com (Some Person)</author>
-      <guid>https://username.github.io/post/2016-03-08-code-sample/</guid>
-      <description>&lt;p&gt;The following are two code samples using syntax highlighting.&lt;/p&gt;</description>
+      <title>RHCSA - Command Line</title>
+      <link>https://username.github.io/post/2020-03-07-command_line/</link>
+      <pubDate>Sat, 07 Mar 2020 13:00:00 +0800</pubDate>
+      <author>cool21540125@gmail.com (Tony Chou)</author>
+      <guid>https://username.github.io/post/2020-03-07-command_line/</guid>
+      <description>&lt;p&gt;因為這東西太多人寫了, 所以很懶得花時間把人家寫過的再寫一次&lt;/p&gt;
+&lt;p&gt;就用導讀的方式, 把一些名詞釐清, 其他的有興趣的自然會去 google&lt;/p&gt;</description>
     </item>
     
     <item>
-      <title>Flake it till you make it</title>
-      <link>https://username.github.io/post/2015-02-26-flake-it-till-you-make-it/</link>
-      <pubDate>Thu, 26 Feb 2015 00:00:00 +0000</pubDate>
-      <author>youremail@domain.com (Some Person)</author>
-      <guid>https://username.github.io/post/2015-02-26-flake-it-till-you-make-it/</guid>
-      <description>Under what circumstances should we step off a path? When is it essential that we finish what we start? If I bought a bag of peanuts and had an allergic reaction, no one would fault me if I threw it out. If I ended a relationship with a woman who hit me, no one would say that I had a commitment problem. But if I walk away from a seemingly secure route because my soul has other ideas, I am a flake?</description>
+      <title>RHCE 經驗談</title>
+      <link>https://username.github.io/post/2020-03-06-about_rhce/</link>
+      <pubDate>Fri, 06 Mar 2020 20:00:00 +0800</pubDate>
+      <author>cool21540125@gmail.com (Tony Chou)</author>
+      <guid>https://username.github.io/post/2020-03-06-about_rhce/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;https://username.github.io/images/2020/03/RHCE_Book.jpeg&#34; alt=&#34;RHCEBooks&#34;&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
-      <title>Test markdown</title>
-      <link>https://username.github.io/post/2015-02-20-test-markdown/</link>
-      <pubDate>Fri, 20 Feb 2015 00:00:00 +0000</pubDate>
-      <author>youremail@domain.com (Some Person)</author>
-      <guid>https://username.github.io/post/2015-02-20-test-markdown/</guid>
-      <description>You can write regular markdown here and Hugo will automatically convert it to a nice webpage. I strongly encourage you to take 5 minutes to learn how to write in markdown - it&amp;rsquo;ll teach you how to transform regular text into bold/italics/headings/tables/etc.
-Here is some bold text
-Here is a secondary heading Here&amp;rsquo;s a useless table:
-Number Next number Previous number Five Six Four Ten Eleven Nine Seven Eight Six Two Three One How about a yummy crepe?</description>
+      <title>架設私有 PyPI Server</title>
+      <link>https://username.github.io/post/2020-03-05-private-pypi-server/</link>
+      <pubDate>Thu, 05 Mar 2020 20:00:00 +0800</pubDate>
+      <author>cool21540125@gmail.com (Tony Chou)</author>
+      <guid>https://username.github.io/post/2020-03-05-private-pypi-server/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;https://username.github.io/images/2020/03/pypiServer.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;用過 Python 的你或許知道 &lt;code&gt;pip install XX&lt;/code&gt;, 但是你知道這是什麼原理嗎?&lt;/li&gt;
+&lt;li&gt;整包服務寫好了, 但跨組之間的套件如何相互飲用又可維持不對外開放?&lt;/li&gt;
+&lt;li&gt;網路對外很慢, 打算用私有 PyPI Server 作為快取或許也是個不錯的點子&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;本文來教你, 在私有環境架一個 PyPI Server&lt;/p&gt;</description>
     </item>
     
     <item>
-      <title>To be</title>
-      <link>https://username.github.io/post/2015-02-13-hamlet-monologue/</link>
-      <pubDate>Fri, 13 Feb 2015 00:00:00 +0000</pubDate>
-      <author>youremail@domain.com (Some Person)</author>
-      <guid>https://username.github.io/post/2015-02-13-hamlet-monologue/</guid>
-      <description>To be, or not to be&amp;ndash;that is the question: Whether &amp;rsquo;tis nobler in the mind to suffer The slings and arrows of outrageous fortune Or to take arms against a sea of troubles And by opposing end them. To die, to sleep&amp;ndash; No more&amp;ndash;and by a sleep to say we end The heartache, and the thousand natural shocks That flesh is heir to. &amp;lsquo;Tis a consummation Devoutly to be wished. To die, to sleep&amp;ndash; To sleep&amp;ndash;perchance to dream: ay, there&amp;rsquo;s the rub, For in that sleep of death what dreams may come When we have shuffled off this mortal coil, Must give us pause.</description>
+      <title>在 CentOS7 上 安裝 Python3.7</title>
+      <link>https://username.github.io/post/2020-03-03-install_python37_on_centos7/</link>
+      <pubDate>Tue, 03 Mar 2020 23:00:00 +0800</pubDate>
+      <author>cool21540125@gmail.com (Tony Chou)</author>
+      <guid>https://username.github.io/post/2020-03-03-install_python37_on_centos7/</guid>
+      <description>&lt;p&gt;本文說明在全新的 CentOS7 裡頭, 安裝 Python3.7 &amp;amp;&amp;amp; python-pip&lt;/p&gt;</description>
     </item>
     
     <item>
-      <title>Dear diary</title>
-      <link>https://username.github.io/post/2015-01-27-dear-diary/</link>
-      <pubDate>Tue, 27 Jan 2015 00:00:00 +0000</pubDate>
-      <author>youremail@domain.com (Some Person)</author>
-      <guid>https://username.github.io/post/2015-01-27-dear-diary/</guid>
-      <description>What is it with that Mary girl? Dragging me to school every day. As if I had a choice. What you don&amp;rsquo;t hear in those nursery rhymes is that she starves me if I don&amp;rsquo;t go to school with her; it&amp;rsquo;s the only way I can stay alive! I&amp;rsquo;m thinking about being adopted by Little Bo Peep, sure I may get lost, but anything is better than being with Mary and those little brats at school (shudder, shudder).</description>
+      <title>Promise 極簡版之不專業學習筆記</title>
+      <link>https://username.github.io/post/2020-01-26-js_promise/</link>
+      <pubDate>Sun, 26 Jan 2020 23:50:00 +0800</pubDate>
+      <author>cool21540125@gmail.com (Tony Chou)</author>
+      <guid>https://username.github.io/post/2020-01-26-js_promise/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;https://username.github.io/images/2020/01/js_promise.png&#34; alt=&#34;JsPromise&#34;&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
-      <title>Soccer</title>
-      <link>https://username.github.io/post/2015-01-19-soccer/</link>
-      <pubDate>Mon, 19 Jan 2015 00:00:00 +0000</pubDate>
-      <author>youremail@domain.com (Some Person)</author>
-      <guid>https://username.github.io/post/2015-01-19-soccer/</guid>
-      <description>From Wikipedia:
-Association football, more commonly known as football or soccer,[2] is a sport played between two teams of eleven players with a spherical ball. It is played by 250 million players in over 200 countries, making it the world&amp;rsquo;s most popular sport.[3][4][5][6] The game is played on a rectangular field with a goal at each end. The object of the game is to score by getting the ball into the opposing goal.</description>
+      <title>Docker Daemon 掛掉 - 問題排解</title>
+      <link>https://username.github.io/post/2019-12-24-docker-daemon-dead/</link>
+      <pubDate>Tue, 24 Dec 2019 00:00:00 +0000</pubDate>
+      <author>cool21540125@gmail.com (Tony Chou)</author>
+      <guid>https://username.github.io/post/2019-12-24-docker-daemon-dead/</guid>
+      <description>&lt;p&gt;起初不知為何的, 把 Docker 搞掛掉了, 然後一直 &lt;code&gt;systemctl restart docker&lt;/code&gt; 都無解&lt;/p&gt;
+&lt;p&gt;但之後想一想, 剛剛只是做了 &lt;code&gt;docker build&lt;/code&gt;, &lt;code&gt;docker run&lt;/code&gt;, 會不會是 Container 出問題導致 Docker Daemon 掛掉?&lt;/p&gt;
+&lt;p&gt;於是開始了下面的解法&lt;/p&gt;</description>
     </item>
     
     <item>
-      <title>Pirates arrrr</title>
-      <link>https://username.github.io/post/2015-01-15-pirates/</link>
-      <pubDate>Thu, 15 Jan 2015 00:00:00 +0000</pubDate>
-      <author>youremail@domain.com (Some Person)</author>
-      <guid>https://username.github.io/post/2015-01-15-pirates/</guid>
-      <description>Piracy is typically an act of robbery or criminal violence at sea. The term can include acts committed on land, in the air, or in other major bodies of water or on a shore. It does not normally include crimes committed against persons traveling on the same vessel as the perpetrator (e.g. one passenger stealing from others on the same vessel). The term has been used throughout history to refer to raids across land borders by non-state agents.</description>
+      <title>Docker Networking</title>
+      <link>https://username.github.io/post/2019-12-19-docker-networking-bridge/</link>
+      <pubDate>Thu, 19 Dec 2019 00:00:00 +0000</pubDate>
+      <author>cool21540125@gmail.com (Tony Chou)</author>
+      <guid>https://username.github.io/post/2019-12-19-docker-networking-bridge/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;https://username.github.io/images/2019/DockerNetworking.png&#34; alt=&#34;DockerNetworking&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Docker Networking Drivers 可區分成底下 5 種：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;bridge (預設)&lt;/li&gt;
+&lt;li&gt;host - 可直接與 Docker Host 映射所有 ports (因只有 Linux 可使用, 故本文略)&lt;/li&gt;
+&lt;li&gt;overlay - 給 Swarm 使用 (因比較進階, 故本文略)&lt;/li&gt;
+&lt;li&gt;macvlan - 可在 Container 內設定 Mac Address (比較涉及網路底層, 故本文略)&lt;/li&gt;
+&lt;li&gt;none - 關閉 Container 的 Networking (因為太自閉了, 故本文略)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;底下詳述 Docker Bridge Networks&lt;/p&gt;</description>
     </item>
     
     <item>
-      <title>First post!</title>
-      <link>https://username.github.io/post/2015-01-04-first-post/</link>
-      <pubDate>Mon, 05 Jan 2015 00:00:00 +0000</pubDate>
-      <author>youremail@domain.com (Some Person)</author>
-      <guid>https://username.github.io/post/2015-01-04-first-post/</guid>
-      <description>This is my first post, how exciting!</description>
+      <title>Docker 基本入門</title>
+      <link>https://username.github.io/post/2019-12-18-docker-basic/</link>
+      <pubDate>Wed, 18 Dec 2019 00:00:00 +0000</pubDate>
+      <author>cool21540125@gmail.com (Tony Chou)</author>
+      <guid>https://username.github.io/post/2019-12-18-docker-basic/</guid>
+      <description>&lt;p&gt;這是個 Docker 基本入門文章, 對於已經有用過 Docker 的人來說, 此文幾乎沒有營養成分.&lt;/p&gt;
+&lt;p&gt;假如你沒碰過 Docker, 但是對於下列有些模糊的概念, 此篇可能適合你花點時間看看:&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Linux 檔案特殊權限 - suid</title>
+      <link>https://username.github.io/post/2019-12-04-suid/</link>
+      <pubDate>Wed, 04 Dec 2019 00:00:00 +0000</pubDate>
+      <author>cool21540125@gmail.com (Tony Chou)</author>
+      <guid>https://username.github.io/post/2019-12-04-suid/</guid>
+      <description>&lt;p&gt;常常看到某個檔案明明可以執行, 但是執行下去之後卻看到 &lt;code&gt;Permission denied&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;但是我明明具有 x 的權限阿!?  若有此問題, 看看這篇吧!!&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>python callable</title>
+      <link>https://username.github.io/post/2019-11-13-callable/</link>
+      <pubDate>Wed, 13 Nov 2019 00:00:00 +0000</pubDate>
+      <author>cool21540125@gmail.com (Tony Chou)</author>
+      <guid>https://username.github.io/post/2019-11-13-callable/</guid>
+      <description>&lt;p&gt;本文不扯 &lt;code&gt;__call__&lt;/code&gt; 與 &lt;code&gt;callable&lt;/code&gt; 這些定義, 自己去看官網.&lt;/p&gt;
+&lt;p&gt;但用一個自己可以理解的範例來示範&amp;hellip;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Markdown基本功</title>
+      <link>https://username.github.io/post/2019-11-12-markdown%E5%9F%BA%E6%9C%AC%E5%8A%9F/</link>
+      <pubDate>Tue, 12 Nov 2019 00:00:00 +0000</pubDate>
+      <author>cool21540125@gmail.com (Tony Chou)</author>
+      <guid>https://username.github.io/post/2019-11-12-markdown%E5%9F%BA%E6%9C%AC%E5%8A%9F/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;本文副檔是當時心血來潮隨意錄製的分享影片&amp;hellip; &amp;gt;///&amp;lt;&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+    </item>
+    
+    <item>
+      <title>Python - Generator</title>
+      <link>https://username.github.io/post/2019-11-10-generator/</link>
+      <pubDate>Sun, 10 Nov 2019 00:00:00 +0000</pubDate>
+      <author>cool21540125@gmail.com (Tony Chou)</author>
+      <guid>https://username.github.io/post/2019-11-10-generator/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;https://username.github.io/images/2019/11/generator.png&#34; alt=&#34;Generator&#34;&gt;&lt;/p&gt;
+&lt;p&gt;本文要來說明 &lt;code&gt;generator&lt;/code&gt; 這東西, 但在了解這個東西之前, 最好先對 &lt;code&gt;iterable&lt;/code&gt; 及 &lt;code&gt;iterator&lt;/code&gt; 有所了解, 會容易理解它.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>文檔系統 - Hugo</title>
+      <link>https://username.github.io/post/2019-08-21-hugo/</link>
+      <pubDate>Wed, 21 Aug 2019 00:00:00 +0000</pubDate>
+      <author>cool21540125@gmail.com (Tony Chou)</author>
+      <guid>https://username.github.io/post/2019-08-21-hugo/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;曾幾何時, 寫過前端又懂後端的我們, 都有種架設自己網站的美夢, 雖說這東西是不是會有人關心並不是重點, 但有自己純手工打造的東西就是&amp;quot;爽&amp;quot;. 只是要全部自幹起來, 難免花些時間, 好在有類似 Hugo 這種 SSG, 讓廣大的 IT 宅們得以實現這可悲的美夢!!&amp;hellip; 本文使用 BeautifulHugo Theme 來作基底&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+    </item>
+    
+    <item>
+      <title>Mail Server - 發送信件至公網域</title>
+      <link>https://username.github.io/post/2019-01-05-mail-server/</link>
+      <pubDate>Sat, 05 Jan 2019 00:00:00 +0000</pubDate>
+      <author>cool21540125@gmail.com (Tony Chou)</author>
+      <guid>https://username.github.io/post/2019-01-05-mail-server/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;https://username.github.io/images/2019/01/MailServer.png&#34; alt=&#34;MailServer&#34;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;這篇要架個 Mail Server, 目的是能在 &lt;code&gt;公網域&lt;/code&gt; 上收發信件. 但因為本文設定未完整, 發送的信件會被視為垃圾郵件!!! 如果有知識比較健全的朋友知道這是怎麼回事再麻煩告訴我&amp;hellip;QQ&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+    </item>
+    
+    <item>
+      <title>DNS - 合法子網域</title>
+      <link>https://username.github.io/post/2018-12-28-dns_public-subdomain/</link>
+      <pubDate>Fri, 28 Dec 2018 00:00:00 +0000</pubDate>
+      <author>cool21540125@gmail.com (Tony Chou)</author>
+      <guid>https://username.github.io/post/2018-12-28-dns_public-subdomain/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;https://username.github.io/images/2018/12/public-subdomain.png&#34; alt=&#34;PublicDomain&#34;&gt;&lt;/p&gt;
+&lt;p&gt;在公網域劃出自己的領域, 自立為王! 讓全世界看得到我!&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>DNS - 子網域自治區</title>
+      <link>https://username.github.io/post/2018-12-27-dns_sub-domain/</link>
+      <pubDate>Thu, 27 Dec 2018 00:00:00 +0000</pubDate>
+      <author>cool21540125@gmail.com (Tony Chou)</author>
+      <guid>https://username.github.io/post/2018-12-27-dns_sub-domain/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;https://username.github.io/images/2018/12/sub-domain.png&#34; alt=&#34;SubDomain&#34;&gt;&lt;/p&gt;
+&lt;p&gt;延續 &lt;a href=&#34;https://username.github.io/post/2018-12-25-dns_basic&#34;&gt;DNS - 基礎實作&lt;/a&gt;, 現在我們要自己人管自己人!!  &lt;del&gt;台灣獨立!? 台灣自治!?&lt;/del&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>DNS - master/slave 架構</title>
+      <link>https://username.github.io/post/2018-12-26-dns_master-slave/</link>
+      <pubDate>Wed, 26 Dec 2018 00:00:00 +0000</pubDate>
+      <author>cool21540125@gmail.com (Tony Chou)</author>
+      <guid>https://username.github.io/post/2018-12-26-dns_master-slave/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;https://username.github.io/images/2018/12/dns_ma.png&#34; alt=&#34;DNS-MA&#34;&gt;&lt;/p&gt;
+&lt;p&gt;生意越做越大, 發現全世界都在問 &lt;code&gt;tonychoucc.com&lt;/code&gt; 在哪裡了, 一台 DNS 太過勞碌, 需要多一點人手, 那就來弄個 DNS master/slave 架構吧~&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>DNS - 基礎實作</title>
+      <link>https://username.github.io/post/2018-12-25-dns_basic/</link>
+      <pubDate>Tue, 25 Dec 2018 00:00:00 +0000</pubDate>
+      <author>cool21540125@gmail.com (Tony Chou)</author>
+      <guid>https://username.github.io/post/2018-12-25-dns_basic/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;https://username.github.io/images/2018/12/dns.png&#34; alt=&#34;DNS-Basic&#34;&gt;&lt;/p&gt;
+&lt;p&gt;想在辦公室裏頭架設一個區域網路, 然後作一個實驗用的 &lt;code&gt;快取 DNS&lt;/code&gt;, 怎麼搞?&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>移除 LVM-SWAP</title>
+      <link>https://username.github.io/post/2018-11-14-remove-lvm-swap/</link>
+      <pubDate>Wed, 14 Nov 2018 00:00:00 +0000</pubDate>
+      <author>cool21540125@gmail.com (Tony Chou)</author>
+      <guid>https://username.github.io/post/2018-11-14-remove-lvm-swap/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;自己一開始在安裝 CentOS7 的時候, 懶得動腦, 而在磁區劃分時, 就選用 &lt;code&gt;讓我自訂磁區劃分&lt;/code&gt;, 然後再選擇使用 &lt;code&gt;預設方式規劃檔案系統&lt;/code&gt;, 於是就被分配了 512M 的 swap
+現在問題來了, 512MB 的空間我不想要用在 swap 之上, 怎麼把它從系統上要回來勒!?
+一開始想得很單純, 先把 swap 拿掉, 再從 fstab 移除, 最後再把 Logical Volume 移除即可, 但悲劇就發生了&amp;hellip; 無法開機 &amp;gt;&amp;lt;&lt;/p&gt;
+&lt;/blockquote&gt;</description>
     </item>
     
   </channel>

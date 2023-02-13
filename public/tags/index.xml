@@ -5,60 +5,249 @@
     <link>https://username.github.io/tags/</link>
     <description>Recent content in Tags on Beautiful Hugo</description>
     <generator>Hugo -- gohugo.io</generator>
-    <managingEditor>youremail@domain.com (Some Person)</managingEditor>
-    <webMaster>youremail@domain.com (Some Person)</webMaster>
-    <lastBuildDate>Mon, 20 Mar 2017 00:00:00 +0000</lastBuildDate><atom:link href="https://username.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <managingEditor>cool21540125@gmail.com (Tony Chou)</managingEditor>
+    <webMaster>cool21540125@gmail.com (Tony Chou)</webMaster>
+    <lastBuildDate>Wed, 28 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://username.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>example</title>
-      <link>https://username.github.io/tags/example/</link>
-      <pubDate>Mon, 20 Mar 2017 00:00:00 +0000</pubDate>
-      <author>youremail@domain.com (Some Person)</author>
-      <guid>https://username.github.io/tags/example/</guid>
+      <title>docker</title>
+      <link>https://username.github.io/tags/docker/</link>
+      <pubDate>Wed, 28 Oct 2020 00:00:00 +0000</pubDate>
+      <author>cool21540125@gmail.com (Tony Chou)</author>
+      <guid>https://username.github.io/tags/docker/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>photoswipe</title>
-      <link>https://username.github.io/tags/photoswipe/</link>
-      <pubDate>Mon, 20 Mar 2017 00:00:00 +0000</pubDate>
-      <author>youremail@domain.com (Some Person)</author>
-      <guid>https://username.github.io/tags/photoswipe/</guid>
+      <title>Python3.7</title>
+      <link>https://username.github.io/tags/python3.7/</link>
+      <pubDate>Mon, 21 Sep 2020 20:00:00 +0800</pubDate>
+      <author>cool21540125@gmail.com (Tony Chou)</author>
+      <guid>https://username.github.io/tags/python3.7/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>bigimg</title>
-      <link>https://username.github.io/tags/bigimg/</link>
-      <pubDate>Tue, 07 Mar 2017 00:00:00 +0000</pubDate>
-      <author>youremail@domain.com (Some Person)</author>
-      <guid>https://username.github.io/tags/bigimg/</guid>
+      <title>centos7</title>
+      <link>https://username.github.io/tags/centos7/</link>
+      <pubDate>Tue, 10 Mar 2020 00:00:00 +0800</pubDate>
+      <author>cool21540125@gmail.com (Tony Chou)</author>
+      <guid>https://username.github.io/tags/centos7/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>math</title>
-      <link>https://username.github.io/tags/math/</link>
-      <pubDate>Sun, 05 Mar 2017 00:00:00 +0000</pubDate>
-      <author>youremail@domain.com (Some Person)</author>
-      <guid>https://username.github.io/tags/math/</guid>
+      <title>linux</title>
+      <link>https://username.github.io/tags/linux/</link>
+      <pubDate>Tue, 10 Mar 2020 00:00:00 +0800</pubDate>
+      <author>cool21540125@gmail.com (Tony Chou)</author>
+      <guid>https://username.github.io/tags/linux/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>code</title>
-      <link>https://username.github.io/tags/code/</link>
-      <pubDate>Tue, 08 Mar 2016 00:00:00 +0000</pubDate>
-      <author>youremail@domain.com (Some Person)</author>
-      <guid>https://username.github.io/tags/code/</guid>
+      <title>redhat</title>
+      <link>https://username.github.io/tags/redhat/</link>
+      <pubDate>Fri, 06 Mar 2020 20:00:00 +0800</pubDate>
+      <author>cool21540125@gmail.com (Tony Chou)</author>
+      <guid>https://username.github.io/tags/redhat/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>RHCE</title>
+      <link>https://username.github.io/tags/rhce/</link>
+      <pubDate>Fri, 06 Mar 2020 20:00:00 +0800</pubDate>
+      <author>cool21540125@gmail.com (Tony Chou)</author>
+      <guid>https://username.github.io/tags/rhce/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>RHCSA</title>
+      <link>https://username.github.io/tags/rhcsa/</link>
+      <pubDate>Fri, 06 Mar 2020 20:00:00 +0800</pubDate>
+      <author>cool21540125@gmail.com (Tony Chou)</author>
+      <guid>https://username.github.io/tags/rhcsa/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>PyPI-Server</title>
+      <link>https://username.github.io/tags/pypi-server/</link>
+      <pubDate>Thu, 05 Mar 2020 20:00:00 +0800</pubDate>
+      <author>cool21540125@gmail.com (Tony Chou)</author>
+      <guid>https://username.github.io/tags/pypi-server/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>javascript</title>
+      <link>https://username.github.io/tags/javascript/</link>
+      <pubDate>Sun, 26 Jan 2020 23:50:00 +0800</pubDate>
+      <author>cool21540125@gmail.com (Tony Chou)</author>
+      <guid>https://username.github.io/tags/javascript/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>nodejs</title>
+      <link>https://username.github.io/tags/nodejs/</link>
+      <pubDate>Sun, 26 Jan 2020 23:50:00 +0800</pubDate>
+      <author>cool21540125@gmail.com (Tony Chou)</author>
+      <guid>https://username.github.io/tags/nodejs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>promise</title>
+      <link>https://username.github.io/tags/promise/</link>
+      <pubDate>Sun, 26 Jan 2020 23:50:00 +0800</pubDate>
+      <author>cool21540125@gmail.com (Tony Chou)</author>
+      <guid>https://username.github.io/tags/promise/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>docker-networking</title>
+      <link>https://username.github.io/tags/docker-networking/</link>
+      <pubDate>Thu, 19 Dec 2019 00:00:00 +0000</pubDate>
+      <author>cool21540125@gmail.com (Tony Chou)</author>
+      <guid>https://username.github.io/tags/docker-networking/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Go</title>
+      <link>https://username.github.io/tags/go/</link>
+      <pubDate>Wed, 04 Dec 2019 00:00:00 +0000</pubDate>
+      <author>cool21540125@gmail.com (Tony Chou)</author>
+      <guid>https://username.github.io/tags/go/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>permission</title>
+      <link>https://username.github.io/tags/permission/</link>
+      <pubDate>Wed, 04 Dec 2019 00:00:00 +0000</pubDate>
+      <author>cool21540125@gmail.com (Tony Chou)</author>
+      <guid>https://username.github.io/tags/permission/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>callable</title>
+      <link>https://username.github.io/tags/callable/</link>
+      <pubDate>Wed, 13 Nov 2019 00:00:00 +0000</pubDate>
+      <author>cool21540125@gmail.com (Tony Chou)</author>
+      <guid>https://username.github.io/tags/callable/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>python</title>
+      <link>https://username.github.io/tags/python/</link>
+      <pubDate>Wed, 13 Nov 2019 00:00:00 +0000</pubDate>
+      <author>cool21540125@gmail.com (Tony Chou)</author>
+      <guid>https://username.github.io/tags/python/</guid>
       <description></description>
     </item>
     
     <item>
       <title>markdown</title>
       <link>https://username.github.io/tags/markdown/</link>
-      <pubDate>Fri, 20 Feb 2015 00:00:00 +0000</pubDate>
-      <author>youremail@domain.com (Some Person)</author>
+      <pubDate>Tue, 12 Nov 2019 00:00:00 +0000</pubDate>
+      <author>cool21540125@gmail.com (Tony Chou)</author>
       <guid>https://username.github.io/tags/markdown/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>generator</title>
+      <link>https://username.github.io/tags/generator/</link>
+      <pubDate>Sun, 10 Nov 2019 00:00:00 +0000</pubDate>
+      <author>cool21540125@gmail.com (Tony Chou)</author>
+      <guid>https://username.github.io/tags/generator/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>iterable</title>
+      <link>https://username.github.io/tags/iterable/</link>
+      <pubDate>Sun, 10 Nov 2019 00:00:00 +0000</pubDate>
+      <author>cool21540125@gmail.com (Tony Chou)</author>
+      <guid>https://username.github.io/tags/iterable/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>iterator</title>
+      <link>https://username.github.io/tags/iterator/</link>
+      <pubDate>Sun, 10 Nov 2019 00:00:00 +0000</pubDate>
+      <author>cool21540125@gmail.com (Tony Chou)</author>
+      <guid>https://username.github.io/tags/iterator/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Gitlab Page</title>
+      <link>https://username.github.io/tags/gitlab-page/</link>
+      <pubDate>Wed, 21 Aug 2019 00:00:00 +0000</pubDate>
+      <author>cool21540125@gmail.com (Tony Chou)</author>
+      <guid>https://username.github.io/tags/gitlab-page/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>SSG</title>
+      <link>https://username.github.io/tags/ssg/</link>
+      <pubDate>Wed, 21 Aug 2019 00:00:00 +0000</pubDate>
+      <author>cool21540125@gmail.com (Tony Chou)</author>
+      <guid>https://username.github.io/tags/ssg/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>dns</title>
+      <link>https://username.github.io/tags/dns/</link>
+      <pubDate>Sat, 05 Jan 2019 00:00:00 +0000</pubDate>
+      <author>cool21540125@gmail.com (Tony Chou)</author>
+      <guid>https://username.github.io/tags/dns/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>mail</title>
+      <link>https://username.github.io/tags/mail/</link>
+      <pubDate>Sat, 05 Jan 2019 00:00:00 +0000</pubDate>
+      <author>cool21540125@gmail.com (Tony Chou)</author>
+      <guid>https://username.github.io/tags/mail/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>apache</title>
+      <link>https://username.github.io/tags/apache/</link>
+      <pubDate>Fri, 28 Dec 2018 00:00:00 +0000</pubDate>
+      <author>cool21540125@gmail.com (Tony Chou)</author>
+      <guid>https://username.github.io/tags/apache/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>lvm</title>
+      <link>https://username.github.io/tags/lvm/</link>
+      <pubDate>Wed, 14 Nov 2018 00:00:00 +0000</pubDate>
+      <author>cool21540125@gmail.com (Tony Chou)</author>
+      <guid>https://username.github.io/tags/lvm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>index</title>
+      <link>https://username.github.io/tags/index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>cool21540125@gmail.com (Tony Chou)</author>
+      <guid>https://username.github.io/tags/index/</guid>
       <description></description>
     </item>
     

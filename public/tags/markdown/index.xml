@@ -5,19 +5,18 @@
     <link>https://username.github.io/tags/markdown/</link>
     <description>Recent content in markdown on Beautiful Hugo</description>
     <generator>Hugo -- gohugo.io</generator>
-    <managingEditor>youremail@domain.com (Some Person)</managingEditor>
-    <webMaster>youremail@domain.com (Some Person)</webMaster>
-    <lastBuildDate>Fri, 20 Feb 2015 00:00:00 +0000</lastBuildDate><atom:link href="https://username.github.io/tags/markdown/index.xml" rel="self" type="application/rss+xml" />
+    <managingEditor>cool21540125@gmail.com (Tony Chou)</managingEditor>
+    <webMaster>cool21540125@gmail.com (Tony Chou)</webMaster>
+    <lastBuildDate>Tue, 12 Nov 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://username.github.io/tags/markdown/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Test markdown</title>
-      <link>https://username.github.io/post/2015-02-20-test-markdown/</link>
-      <pubDate>Fri, 20 Feb 2015 00:00:00 +0000</pubDate>
-      <author>youremail@domain.com (Some Person)</author>
-      <guid>https://username.github.io/post/2015-02-20-test-markdown/</guid>
-      <description>You can write regular markdown here and Hugo will automatically convert it to a nice webpage. I strongly encourage you to take 5 minutes to learn how to write in markdown - it&amp;rsquo;ll teach you how to transform regular text into bold/italics/headings/tables/etc.
-Here is some bold text
-Here is a secondary heading Here&amp;rsquo;s a useless table:
-Number Next number Previous number Five Six Four Ten Eleven Nine Seven Eight Six Two Three One How about a yummy crepe?</description>
+      <title>Markdown基本功</title>
+      <link>https://username.github.io/post/2019-11-12-markdown%E5%9F%BA%E6%9C%AC%E5%8A%9F/</link>
+      <pubDate>Tue, 12 Nov 2019 00:00:00 +0000</pubDate>
+      <author>cool21540125@gmail.com (Tony Chou)</author>
+      <guid>https://username.github.io/post/2019-11-12-markdown%E5%9F%BA%E6%9C%AC%E5%8A%9F/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;本文副檔是當時心血來潮隨意錄製的分享影片&amp;hellip; &amp;gt;///&amp;lt;&lt;/p&gt;
+&lt;/blockquote&gt;</description>
     </item>
     
   </channel>
