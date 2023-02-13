@@ -1,23 +1,25 @@
 
+.PHONY: build
 build:
-	rm -rf dist && hugo
+	rm -rf public && hugo
 
+
+.PHONY: tos3
 tos3:
 	aws s3 sync public/ s3://blog2023.tonychoucc.com \
 		--delete \
 		--exclude ".DS_Store" \
 		--profile tonychoucc
 
-deploy-s3: build tos3
 
+.PHONY: dev
 dev:
 	hugo server -D
 
+
+.PHONY: purge
 purge:
 	aws cloudfront create-invalidation \
-		--distribution-id E3TA028L5M59A6 \
+		--distribution-id "ESDXSGFLLAWF7" \
 		--paths "/*" \
 		--profile tonychoucc
-
-.PHONY:
-	build tos3 deploy-s3 dev
