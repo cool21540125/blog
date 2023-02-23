@@ -6,12 +6,16 @@ phases:
   #     - npm i npm@latest -g
   #     - pip install --upgrade pip
   #     - pip install --upgrade awscli
+  # docker pull klakegg/hugo:ci
   # pre_build:
   #   commands:
   #     - npm install
   build:
     commands:
-      - rm -rf public && hugo
+      - hugo
   post_build:
     commands:
+      - echo "---- public/ ----"
+      - ls public
+      - echo "================="
       - aws s3 sync ./public $S3_BUCKET 
