@@ -1,18 +1,21 @@
 version: 0.2
 
 phases:
-  # install: 
-  #   commands:
-  #     - npm i npm@latest -g
+  install: 
+    commands:
+      - docker --version
+      - docker pull klakegg/hugo:ci
+      # - npm i npm@latest -g
   #     - pip install --upgrade pip
   #     - pip install --upgrade awscli
   # docker pull klakegg/hugo:ci
-  # pre_build:
-  #   commands:
-  #     - npm install
+  pre_build:
+    commands:
+      # - docker run -it --rm -v "$(pwd)/blog2:/src/" klakegg/hugo:ci sh
   build:
     commands:
-      - hugo
+      # - hugo
+      - docker run -it --rm -v "$(pwd)/blog:/src/" klakegg/hugo:ci hugo
   post_build:
     commands:
       - echo "---- public/ ----"
