@@ -1,3 +1,5 @@
+# 缺少 git 解決不了 submodule 問題...
+# 如果找到 git binary for `klakegg/hugo:ci:ui` 應該有解
 version: 0.2
 
 phases:
