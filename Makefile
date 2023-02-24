@@ -1,9 +1,4 @@
 
-.PHONY: build
-build:
-	rm -rf public && hugo
-
-
 .PHONY: s3
 s3:
 	aws s3 sync public/ s3://blog2.tonychoucc.com \
