@@ -1,4 +1,4 @@
-baseurl = "https://demo-aws-cicd.tonychoucc.com"
+baseurl = "https://blog.tonychoucc.com"
 DefaultContentLanguage = "en"
 title = "朝向 SRE 邁進中"
 theme = "beautifulhugo"
