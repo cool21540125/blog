@@ -1,16 +1,11 @@
 
-.PHONY: s3
-s3:
-	aws s3 sync public/ s3://blog2.tonychoucc.com \
-		--delete \
-		--exclude ".DS_Store" \
-		--profile tonychoucc
-
-
 .PHONY: dev
 dev:
 	hugo server -D
 
+.PHONY: build
+build:
+	hugo -v
 
 .PHONY: nginx
 nginx:
@@ -18,11 +13,16 @@ nginx:
 	hugo && \
 	docker run -p 80:80 -d --name blog-nginx -v "${PWD}/public:/usr/share/nginx/html/" nginx:alpine
 
+.PHONY: s3
+s3:
+	aws s3 sync public/ s3://blog2.tonychoucc.com \
+		--delete \
+		--exclude ".DS_Store" \
+		--profile tonychoucc
 
 .PHONY: clean
 clean:
 	rm -rf public && docker rm -f blog-nginx
-
 
 .PHONY: purge
 purge:
@@ -31,6 +31,8 @@ purge:
 		--paths "/*" \
 		--profile tonychoucc
 
-
 .PHONY: deploy
-deploy: s3 purge
+deploy: build s3 purge
+
+
+
