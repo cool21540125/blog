@@ -30,3 +30,7 @@ purge:
 		--distribution-id "E31VLMVJPNIG00" \
 		--paths "/*" \
 		--profile tonychoucc
+
+
+.PHONY: deploy
+deploy: s3 purge
