@@ -15,13 +15,17 @@ drafts: false
 
 ## Personality
 
-- Master degree in Finance, graduated from NKFUST (National First First University of Science and Technology).
-- Used to familiar with mathematics(differential and integration) in the past.
-- Spent a lot of time studing statistics, and also organising data using Matlab.
-- Highly enthusiasm for knowledge no matter on finance(in the past) or information technology
-- Love to share knowldege with others
+- Facing problems positively, and seldom avoid them
+- Highly enthusiasm for learning information technology
 - Tend to tell the truth instead of good words
 - Patient with communication and happy to help others
+- Love to share knowldege with others
+
+
+## Academic
+
+- Master degree in Finance, graduated from NKUST(高雄科技大學)
+- University degree in Finance, graduated from NTCU(台中科技大學)
 
 
 ## Skills (during job work and self learning)
@@ -29,7 +33,8 @@ drafts: false
 - 2023 (DevOps Engineer)
     - Kubernetes
     - datadog
-    - AWS
+    - AWS Cloud
+    - CocosCreator, iOS & Android build APP
 - 2022 (Operation Engineer)
     - Zabbix
     - Jenkins
@@ -60,10 +65,19 @@ drafts: false
     - and a lot.....(Hadoop eco-system, ELK, IOT, R analysis, Data mining, web crawler, ...)
 3. uuu(恆逸教育訓練中心)(2018/05-2018/06) : Network Infrastructure and Networking Service
     - Basic networking concept, at least I know what is sub-networking and CIDR, and how to implement them on local VM.
+    - RedHat-RHCSA - 2018/11
+    <img src="/images/tony-RHCSA.png" width="50%">
 4. uuu(恆逸教育訓練中心)(2018/07-2018/10) : RHCE course
     - Basic skill for managing Red Hat Enterprise Linux, ex: manage Host-base Firewall, SELinux, System Permission, and so on.
     - Basic skill for developing on Red Hat Enterprise Linux, ex: Writing Shell Scripts, Config for web service and database service, and so on.
+    - RedHat-RHCE - 2018/12
+    <img src="/images/tony-RHCE.png" width="50%">
 5. aws(2022/05~2022/09) : AWS Solution Architecture Associate
+    - AWS-SAA - 2022/08
+    <img src="/images/tony-SAA.png" width="50%">
+5. aws(2022/09~2023/02) : AWS Developer Associate
+    - AWS-SAA - 2023/02
+    <img src="/images/tony-DVA.png" width="50%">
 
 
 ## Working Experience
@@ -93,11 +107,3 @@ drafts: false
     - Management our product installed in Ubuntu
     - Discuss with PM what our customer want, design for database. And help back-end and front-end programmer to make API Resource end point.
     - Be a TA to sharing knowledges : almost all the knowledge withing RHCE that I learned from uuu, networking concept, database management permission, and so on.
-
-
-- AWS-SAA - 2022/08
-    <img src="/images/tony-SAA.png" width="50%">
-- RedHat-RHCE - 2018/12
-    <img src="/images/tony-RHCE.png" width="50%">
-- RedHat-RHCSA - 2018/11
-    <img src="/images/tony-RHCSA.png" width="50%">
