@@ -1,8 +1,8 @@
 
 ## Goal for 2023
 
-- AWS DVA
 - AWS SOA
+- K8s CKA
 - TOEIC Golden
 
 having fun and easy learning~
