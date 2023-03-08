@@ -72,10 +72,13 @@ drafts: false
     - Basic skill for developing on Red Hat Enterprise Linux, ex: Writing Shell Scripts, Config for web service and database service, and so on.
     - RedHat-RHCE - 2018/12
     <img src="/images/tony-RHCE.png" width="50%">
-5. aws(2022/05~2022/09) : AWS Solution Architecture Associate
+5. gcp(2022/08) : GCP Fundamental Training
+    - Basic use of Compute Engine, CloudSQL, GAE, GKE, Cloud Monitoring
+    <img src="/images/tony-GCP-training.png" width="50%">
+6. aws(2022/05~2022/09) : AWS Solution Architecture Associate
     - AWS-SAA - 2022/08
     <img src="/images/tony-SAA.png" width="50%">
-5. aws(2022/09~2023/02) : AWS Developer Associate
+7. aws(2022/09~2023/02) : AWS Developer Associate
     - AWS-SAA - 2023/02
     <img src="/images/tony-DVA.png" width="50%">
 
