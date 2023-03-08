@@ -16,6 +16,10 @@ phases:
       - echo "==========================="
       - echo "In pre_build phase.."
       - echo "Current directory is ${CODEBUILD_SRC_DIR}"
+      - echo "Change to ****** UAT Url ******"
+      - sed -i 's/blog/uat-blog/' config.toml
+      - echo "$(head -n 1 config.toml)"
+      - echo "==========================="
   build:
     commands:
       - echo "-----------------"
