@@ -24,7 +24,8 @@ phases:
     commands:
       - echo "-----------------"
       - hugo -v
-      - ls -alh
+      - echo "-----------------"
+      - ls -alh public/
 artifacts:
   files:
     - "**/*"
