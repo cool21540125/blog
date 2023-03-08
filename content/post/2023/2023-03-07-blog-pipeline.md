@@ -2,7 +2,7 @@
 title: "CICD Pipeline of my Blog"
 date: 2023-03-07
 tags: ["CodeBuild", "CodeDeploy", "CodePipeline", "Lambda", "CloudFront", "Route53"]
-draft: false
+draft: true
 ---
 
 前言:
