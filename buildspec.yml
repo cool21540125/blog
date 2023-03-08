@@ -29,4 +29,5 @@ phases:
       - ls -alh public/
 artifacts:
   files:
-    - "public/*"
+    - "**/*"
+  base-directory: public
