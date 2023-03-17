@@ -6,7 +6,7 @@ tags: ["VPC", "Subnet", "SecuityGroup"]
 draft: true
 ---
 
-![VPC.png](/images/2023/03/VPC.png)
+![VPC-hands-on.png](/images/2023/03/VPC-hands-on.png)
 
 <!--more-->
 
@@ -81,7 +81,7 @@ draft: true
 
 目前完成階段如下:
 
-![VPC_01.png](/images/2023/03/VPC_01.png)
+![VPC-hands-on_01.png](/images/2023/03/VPC-hands-on_01.png)
 
 
 ------------------------------------
@@ -97,7 +97,7 @@ NOTE: `Internet Gateway` 與 VPC 僅能做一對一關聯
 
 目前完成階段如下:
 
-![VPC_02.png](/images/2023/03/VPC_02.png)
+![VPC-hands-on_02.png](/images/2023/03/VPC-hands-on_02.png)
 
 
 ------------------------------------
@@ -111,7 +111,7 @@ NOTE: `Internet Gateway` 與 VPC 僅能做一對一關聯
 
 目前完成階段如下:
 
-![VPC_03.png](/images/2023/03/VPC_03.png)
+![VPC-hands-on_03.png](/images/2023/03/VPC-hands-on_03.png)
 
 
 ------------------------------------
@@ -150,7 +150,7 @@ Subnet 裏頭, 會依照 Route Table 的規則來轉發流量 (概念等同於�
 
 目前完成階段如下:
 
-![VPC_04.png](/images/2023/03/VPC_04.png)
+![VPC-hands-on_04.png](/images/2023/03/VPC-hands-on_04.png)
 
 疑~ 等等! 上圖的 Router 是什麼挖歌? 
 
@@ -185,7 +185,7 @@ Subnet 裏頭, 會依照 Route Table 的規則來轉發流量 (概念等同於�
 
 目前完成階段如下:
 
-![VPC_05.png](/images/2023/03/VPC_05.png)
+![VPC-hands-on_05.png](/images/2023/03/VPC-hands-on_05.png)
 
 
 ------------------------------------
