@@ -3,7 +3,7 @@ title: "動手作 AWS VPC"
 subtitle: ""
 date: 2023-03-15
 tags: ["VPC", "Subnet", "SecuityGroup"]
-draft: true
+draft: false
 ---
 
 ![VPC-hands-on.png](/images/2023/03/VPC-hands-on.png)
