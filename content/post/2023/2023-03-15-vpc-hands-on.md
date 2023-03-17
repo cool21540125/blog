@@ -6,11 +6,14 @@ tags: ["VPC", "Subnet", "SecuityGroup"]
 draft: false
 ---
 
+本文要使用 AWS 來建立底下的架構
+
 ![VPC-hands-on.png](/images/2023/03/VPC-hands-on.png)
 
 <!--more-->
 
-# 讓我廢話幾句
+
+# Murmur
 
 很久很久以前, 如果想在 AWS 上頭建立 Resources, 第一道大魔王關卡就是得去弄個可以訪問外網的 VPC. 這把很多像我這樣的菜菜們拒於門外, 於是從某年某日開始, 每個 AWS 帳號底下的每個 Region 都會有個 `default VPC`. 任何實驗性質的 Resources, 直接塞進來就可以正常使用網路了. 
 
@@ -27,14 +30,14 @@ draft: false
 完成以後就可以知道, Private Subnet 與 Public Subnet 為了要與外界作互動, 需要配置那些東西
 
 
-# 冷知識
+# Trivia
 
 - 一個 Region, 只能建立 5 個 VPCs (軟性限制)
 - 一個 VPC, 能建立 5 個 CIDRs
 - CIDR 的切割, 只能限制在 `x.x.x.x/16 ~ x.x.x.x/28`
 
 
-# 故事背景
+# Requirements
 
 1. 團隊需要有個虛擬網路
 2. 裏頭需要有 **可直接對外(公網段)** 以及 **需要透過 NAT 對外(私網段)** 的網段
@@ -42,28 +45,28 @@ draft: false
 4. **私網段** 的機器開放 22 port, 可藉由 **公網段** 的機器做為跳板, 使用 ssh 連入
 5. **公網段** 的機器開放 80 及 22 port
 
-那麼該怎麼用 AWS 開出上述的環境既是底下要說的
+那麼該怎麼用 AWS 開出上述的環境, 則是本文要說的(如同最一開始那張圖)
 
 
 # Getting started...
 
 概念流程大概是這樣的: 
 
-- Create VPC
-- 建立 Subnets (及其 CIDR)
+- Create VPC (with CIDR)
+- Create Subnets (with CIDRs)
     - PublicSubnetA `10.0.0.0/24`
     - PublicSubnetB `10.0.1.0/24`(將來擴充用)
     - PrivateSubnetA `10.0.16.0/20`
     - PrivateSubnetB `10.0.32.0/20`(將來擴充用)
-- 建立 Internet Gateway
-- 建立 NAT Gateway
-- 建立 Route Table, 並將其納入上面建立的 Subnets 之中
-- 建立 Security Group
-- 建立 EC2 && 關聯 EC2 與 Security Group
+- Create Internet Gateway
+- Create NAT Gateway
+- Create Route Table, 並將其納入上面的 Subnets 之中
+- Create Security Group
+- Create EC2
 
 
 ------------------------------------
-## 1. VPC 及 Subnet
+## 1. VPC && Subnet
 
 建立 VPC 空殼, 並且配置 CIDR, ex: `10.0.0.0/16`, 沒啥特別的...
 
@@ -215,7 +218,7 @@ Security Group 記得套用 `soa-public` 的 Security Group
 
 
 ------------------------------------
-# 結語
+# Final
 
 早期有個東西叫做 `NAT Instance`, 不過好像在 2020 年的時候就不再提供了, 改使用 `NAT Gateway`(需要課金)
 
@@ -224,3 +227,9 @@ Security Group 記得套用 `soa-public` 的 Security Group
 VPC 算得上是整個 AWS 的基石~
 
 有必要搞清楚整個網路元件之間的互動方式以及限制, 避免將來深陷不必要的泥淖當中....
+
+最後~ 
+
+既然要朝向偉大的 SRE 之路邁進
+
+那麼把這架構寫成 IaC 也是將來的必要功課@@ (將來再來寫了)
