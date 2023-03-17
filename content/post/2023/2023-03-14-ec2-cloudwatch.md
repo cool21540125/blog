@@ -244,3 +244,20 @@ EC2 > Per-Instance Metrics > CPUUtilization (善用 ctrl+f) > (勾選你要監�
 配置 ALB 及 CloudWatch Agent 那一段還蠻麻煩的=.=
 
 哪天心血來潮再弄個 Ansible 或是 IaC 的方式來把它處理掉好了...
+
+
+## What I think
+
+我覺得比較可惜的是, 公司在面試時比較不適合出這樣類型的考題
+
+這類型考題比較適合在面試者答應面試後
+
+公司給對方做的 small lab, 面試時直接交作業(或是討論)
+
+又或者, 可以改成另一種測驗提問方式, 例如說:
+
+> 公司都在 EC2 上頭部署服務, 而服務時常不可靠, 該如何優化?
+
+然後互動方式很自然而然的, 就會提到 ASG 註冊 Instances 的細節, Load Balancer 如何做分流, Security Group 如何配置, Instance 及 Service 該如何做監控及災難的因應等等
+
+除非團隊的目標是, 要找出對 AWS 操作一直都很熟悉的人, 不然這樣很難鑑別一個人適不適任

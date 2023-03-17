@@ -268,14 +268,37 @@ ex: `blog.tonychoucc.com`
 
 ~~學習障礙大增, 要不是為了考試做環境炫耀自己也有在用 AWS, 誰會想用這鳥東西~~
 
-然而仍有幾個地方可能要優化, 像是 CloudFront 回源的時候, 應該要透過 OAC 或 OAI
+然而仍有幾個地方可能要優化
+
+
+## 1. CDN
+
+回源的時候, 應該要透過 OAC 或 OAI
 
 而不是讓他直接 Public Access 回 S3
 
-再者, 如上面所說的, CodeBuild 單獨執行可以成功更新 Artifacts
 
-然而藉由 CodePipeline 所觸發執行的 CodeBuild, 雖說看起來正常跑完, Log 也沒毛病
+## 2. Build
 
-但偏偏 Artifacts 卻無動於衷... 這個可能還有得讓我燒腦了
+CodeBuild 目前使用的是 AWS 提供的 Image
 
-<!-- more -->
+但其實可以使用 Custom Image, 自己先弄個 Alpine
+
+然後在裏頭先塞好 hugo CLI 以及我自己的 hugo template
+
+然後將此 image 推到自己的 ECR
+
+屆時更新時可以輕量化許多
+
+
+## 3. pipeline
+
+目前分成 2 個環境: uat 及 prd
+
+每次都要 uat 部署完, 確認沒問題後再推上 prd
+
+不過可以把 uat 及 prd 串起來, 中間再加一個 manual approve
+
+像是 uat 部署完後, 會透過像是 Slack bot 互動提問的方式, 詢問是否部署到 prd
+
+自行檢查 uat 環境一切正常後, 藉由 approve 以後直接更新 prd
