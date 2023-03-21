@@ -8,8 +8,8 @@ pygmentsCodeFences = true
 pygmentsCodefencesGuessSyntax = true
 #pygmentsUseClassic = true
 #pygmentOptions = "linenos=inline"
-# disqusShortname = "blog-tonychoucc-com"
-# googleAnalytics = "UA-128885517-3"
+disqusShortname = "blog-tonychoucc-com"
+googleAnalytics = "UA-128885517-3"
 
 [Params]
   # homeTitle = "朝向 SRE 邁進中123" # Set a different text for the header on the home page
