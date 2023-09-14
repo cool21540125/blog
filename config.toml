@@ -89,7 +89,7 @@ pygmentsCodefencesGuessSyntax = true
 
 [[menu.main]]
     name = "About"
-    url = "page/about/"
+    url = "page/about/index.html"
     weight = 3
 
 [[menu.main]]
