@@ -6,6 +6,7 @@ pygmentsStyle = "trac"
 pygmentsUseClasses = true
 pygmentsCodeFences = true
 pygmentsCodefencesGuessSyntax = true
+uglyurls = true
 #pygmentsUseClassic = true
 #pygmentOptions = "linenos=inline"
 disqusShortname = "blog-tonychoucc-com"
@@ -14,7 +15,7 @@ googleAnalytics = "UA-128885517-3"
 [Params]
   # homeTitle = "朝向 SRE 邁進中123" # Set a different text for the header on the home page
   # subtitle = "Blog 荒廢了 2 年有了. Since 2023/02, 會不定期開始加東西"
-  mainSections = ["post","posts"]
+  mainSections = ["post","posts", "page"]
   logo = "images/virus.jpeg"
   # logo = "img/avatar-icon.png" # Expecting square dimensions
   favicon = "images/favicon.ico"
@@ -89,14 +90,19 @@ googleAnalytics = "UA-128885517-3"
 
 [[menu.main]]
     name = "About"
-    url = "page/about/"
+    url = "/page/about.html"
     weight = 3
 
 [[menu.main]]
     parent = "misc"
     name = "Nightmare"
-    url = "page/nightmare2022/"
+    url = "/page/nightmare2022.html"
     weight = 4
+
+[[menu.main]]
+    name = "Tags"
+    url = "tags.html"
+    weight = 5
 
 # [[menu.main]]
 #     parent = "misc"
@@ -104,33 +110,6 @@ googleAnalytics = "UA-128885517-3"
 #     url = "page/nightmare2023/"
 #     weight = 3
 
-# [[menu.main]]
-#     identifier = "samples"
-#     name = "Samples"
-#     weight = 2
-
-# [[menu.main]]
-#     parent = "samples"
-#     name = "Big Image Sample"
-#     url = "post/2017-03-07-bigimg-sample"
-#     weight = 1
-
-# [[menu.main]]
-#     parent = "samples"
-#     name = "Math Sample"
-#     url = "post/2017-03-05-math-sample"
-#     weight = 2
-
-# [[menu.main]]
-#     parent = "samples"
-#     name = "Code Sample"
-#     url = "post/2016-03-08-code-sample"
-#     weight = 3
-
-[[menu.main]]
-    name = "Tags"
-    url = "tags"
-    weight = 3
 
 [markup]
   [markup.goldmark]

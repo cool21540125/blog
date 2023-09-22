@@ -1,7 +1,7 @@
 
 .PHONY: dev
 dev:
-	hugo server
+	hugo server -D
 
 .PHONY: build
 build:
