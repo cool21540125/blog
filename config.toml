@@ -15,7 +15,7 @@ googleAnalytics = "UA-128885517-3"
 [Params]
   # homeTitle = "朝向 SRE 邁進中123" # Set a different text for the header on the home page
   # subtitle = "Blog 荒廢了 2 年有了. Since 2023/02, 會不定期開始加東西"
-  mainSections = ["post","posts", "page"]
+  mainSections = ["post","posts"]
   logo = "images/virus.jpeg"
   # logo = "img/avatar-icon.png" # Expecting square dimensions
   favicon = "images/favicon.ico"
