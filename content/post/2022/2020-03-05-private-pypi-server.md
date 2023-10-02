@@ -1,7 +1,7 @@
 ---
 title: 架設私有 PyPI Server
 date: 2020-03-05T20:00:00+08:00
-tags: ["Python3.7", "CentOS7", "PyPI-Server"]
+tags: ["Python3", "CentOS7", "PyPI-Server"]
 draft: false
 ---
 ![](/images/2020/03/pypiServer.png)

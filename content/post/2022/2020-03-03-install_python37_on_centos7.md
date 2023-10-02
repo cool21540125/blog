@@ -1,7 +1,7 @@
 ---
 title: 在 CentOS7 上 安裝 Python3.7
 date: 2020-03-03T23:00:00+08:00
-tags: ["Python3.7", "CentOS7"]
+tags: ["Python3", "CentOS7"]
 draft: false
 ---
 
