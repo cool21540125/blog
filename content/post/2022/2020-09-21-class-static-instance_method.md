@@ -1,7 +1,7 @@
 ---
 title: classmethod, staticmethod, instance method in Python
 date: 2020-09-21T20:00:00+08:00
-tags: ["Python3.7"]
+tags: ["Python3"]
 draft: false
 ---
 
