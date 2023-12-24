@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>python on 朝向 SRE 邁進</title><link>https://blog.tonychoucc.com/tags/python.html</link><description>Recent content in python on 朝向 SRE 邁進</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Tue, 14 Feb 2023 13:05:26 +0800</lastBuildDate><atom:link href="https://blog.tonychoucc.com/tags/python/index.xml" rel="self" type="application/rss+xml"/><item><title>Python 取值的順序</title><link>https://blog.tonychoucc.com/post/2023/2023-02-14-py-attr-order.html</link><pubDate>Tue, 14 Feb 2023 13:05:26 +0800</pubDate><guid>https://blog.tonychoucc.com/post/2023/2023-02-14-py-attr-order.html</guid><description>&lt;p>本文屬於比較扎實的 python Coding 觀念&lt;/p>
+&lt;p>談論 python 從 &lt;code>物件/類別&lt;/code> 取得 &lt;code>屬性/方法&lt;/code>(以下有時候會統稱為 取值) 的順序&lt;/p>
+&lt;p>了解這篇的觀念, 將有助於:&lt;/p>
+&lt;ul>
+&lt;li>可強對於遇到 AttributeError 的除錯能力&lt;/li>
+&lt;li>從多重繼承取值的時候, 拿到得值經常不符合你預期的那樣的除錯能力&lt;/li>
+&lt;/ul></description></item><item><title>python callable</title><link>https://blog.tonychoucc.com/post/2019/2019-11-13-callable.html</link><pubDate>Wed, 13 Nov 2019 00:00:00 +0000</pubDate><guid>https://blog.tonychoucc.com/post/2019/2019-11-13-callable.html</guid><description>&lt;p>本文不扯 &lt;code>__call__&lt;/code> 與 &lt;code>callable&lt;/code> 這些定義, 自己去看官網.&lt;/p>
+&lt;p>但用一個自己可以理解的範例來示範&amp;hellip;&lt;/p></description></item></channel></rss>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>lvm on 朝向 SRE 邁進</title><link>https://blog.tonychoucc.com/tags/lvm.html</link><description>Recent content in lvm on 朝向 SRE 邁進</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 14 Nov 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.tonychoucc.com/tags/lvm/index.xml" rel="self" type="application/rss+xml"/><item><title>移除 LVM-SWAP</title><link>https://blog.tonychoucc.com/post/2018/2018-11-14-remove-lvm-swap.html</link><pubDate>Wed, 14 Nov 2018 00:00:00 +0000</pubDate><guid>https://blog.tonychoucc.com/post/2018/2018-11-14-remove-lvm-swap.html</guid><description>&lt;blockquote>
+&lt;p>自己一開始在安裝 CentOS7 的時候, 懶得動腦, 而在磁區劃分時, 就選用 &lt;code>讓我自訂磁區劃分&lt;/code>, 然後再選擇使用 &lt;code>預設方式規劃檔案系統&lt;/code>, 於是就被分配了 512M 的 swap
+現在問題來了, 512MB 的空間我不想要用在 swap 之上, 怎麼把它從系統上要回來勒!?
+一開始想得很單純, 先把 swap 拿掉, 再從 fstab 移除, 最後再把 Logical Volume 移除即可, 但悲劇就發生了&amp;hellip; 無法開機 &amp;gt;&amp;lt;&lt;/p>
+&lt;/blockquote></description></item></channel></rss>

@@ -1,0 +1,232 @@
+<!doctype html><html lang=en itemscope itemtype=http://schema.org/WebPage><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1"><title>DNS - 基礎實作 -</title><meta name=description content="
+想在辦公室裏頭架設一個區域網路, 然後作一個實驗用的 快取 DNS, 怎麼搞?"><script type=application/ld+json>{"@context":"http://schema.org","@type":"WebSite","name":"朝向 SRE 邁進","url":"https:\/\/blog.tonychoucc.com"}</script><script type=application/ld+json>{"@context":"http://schema.org","@type":"Organization","name":"","url":"https:\/\/blog.tonychoucc.com"}</script><script type=application/ld+json>{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https:\/\/blog.tonychoucc.com","name":"home"}},{"@type":"ListItem","position":3,"item":{"@id":"https:\/\/blog.tonychoucc.com\/post\/2018\/2018-12-25-dns_basic.html","name":"DNS 基礎實作"}}]}</script><script type=application/ld+json>{"@context":"http://schema.org","@type":"Article","author":{"name":""},"headline":"DNS - 基礎實作","description":"\n想在辦公室裏頭架設一個區域網路, 然後作一個實驗用的 快取 DNS, 怎麼搞?\n","inLanguage":"en","wordCount":1027,"datePublished":"2018-12-25T00:00:00","dateModified":"2018-12-25T00:00:00","image":"https:\/\/blog.tonychoucc.com\/images\/virus.jpeg","keywords":["dns"],"mainEntityOfPage":"https:\/\/blog.tonychoucc.com\/post\/2018\/2018-12-25-dns_basic.html","publisher":{"@type":"Organization","name":"https:\/\/blog.tonychoucc.com","logo":{"@type":"ImageObject","url":"https:\/\/blog.tonychoucc.com\/images\/virus.jpeg","height":60,"width":60}}}</script><meta property="og:title" content="DNS - 基礎實作"><meta property="og:description" content="
+想在辦公室裏頭架設一個區域網路, 然後作一個實驗用的 快取 DNS, 怎麼搞?"><meta property="og:image" content="https://blog.tonychoucc.com/images/virus.jpeg"><meta property="og:url" content="https://blog.tonychoucc.com/post/2018/2018-12-25-dns_basic.html"><meta property="og:type" content="website"><meta property="og:site_name" content="朝向 SRE 邁進"><meta name=twitter:title content="DNS - 基礎實作"><meta name=twitter:description content="
+想在辦公室裏頭架設一個區域網路, 然後作一個實驗用的 快取 DNS, 怎麼搞?"><meta name=twitter:image content="https://blog.tonychoucc.com/images/virus.jpeg"><meta name=twitter:card content="summary_large_image"><link href=https://blog.tonychoucc.com/images/favicon.ico rel=icon type=image/x-icon><meta name=generator content="Hugo 0.119.0"><link rel=alternate href=https://blog.tonychoucc.com/index.xml type=application/rss+xml title="朝向 SRE 邁進"><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css integrity=sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X crossorigin=anonymous><link rel=stylesheet href=https://use.fontawesome.com/releases/v5.5.0/css/all.css integrity=sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU crossorigin=anonymous><link rel=stylesheet href=https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css integrity=sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u crossorigin=anonymous><link rel=stylesheet href=https://blog.tonychoucc.com/css/main.css><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic"><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800"><link rel=stylesheet href=https://blog.tonychoucc.com/css/highlight.min.css><link rel=stylesheet href=https://blog.tonychoucc.com/css/codeblock.css><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css integrity=sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh crossorigin=anonymous><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css integrity=sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R crossorigin=anonymous><script type=application/javascript>var doNotTrack=!1;doNotTrack||(function(e,t,n,s,o,i,a){e.GoogleAnalyticsObject=o,e[o]=e[o]||function(){(e[o].q=e[o].q||[]).push(arguments)},e[o].l=1*new Date,i=t.createElement(n),a=t.getElementsByTagName(n)[0],i.async=1,i.src=s,a.parentNode.insertBefore(i,a)}(window,document,"script","https://www.google-analytics.com/analytics.js","ga"),ga("create","UA-128885517-3","auto"),ga("send","pageview"))</script></head><body><nav class="navbar navbar-default navbar-fixed-top navbar-custom"><div class=container-fluid><div class=navbar-header><button type=button class=navbar-toggle data-toggle=collapse data-target=#main-navbar>
+<span class=sr-only>Toggle navigation</span>
+<span class=icon-bar></span>
+<span class=icon-bar></span>
+<span class=icon-bar></span></button>
+<a class=navbar-brand href=https://blog.tonychoucc.com>朝向 SRE 邁進</a></div><div class="collapse navbar-collapse" id=main-navbar><ul class="nav navbar-nav navbar-right"><li><a title=Blog href=/>Blog</a></li><li><a title=About href=/page/about.html>About</a></li><li class=navlinks-container><a class=navlinks-parent>Misc</a><div class=navlinks-children><a href=/page/nightmare2022.html>Nightmare</a></div></li><li><a title=Tags href=/tags.html>Tags</a></li></ul></div><div class=avatar-container><div class=avatar-img-border><a title="朝向 SRE 邁進" href=https://blog.tonychoucc.com><img class=avatar-img src=https://blog.tonychoucc.com/images/virus.jpeg alt="朝向 SRE 邁進"></a></div></div></div></nav><div class=pswp tabindex=-1 role=dialog aria-hidden=true><div class=pswp__bg></div><div class=pswp__scroll-wrap><div class=pswp__container><div class=pswp__item></div><div class=pswp__item></div><div class=pswp__item></div></div><div class="pswp__ui pswp__ui--hidden"><div class=pswp__top-bar><div class=pswp__counter></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+<button class="pswp__button pswp__button--share" title=Share></button>
+<button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button><div class=pswp__preloader><div class=pswp__preloader__icn><div class=pswp__preloader__cut><div class=pswp__preloader__donut></div></div></div></div></div><div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"><div class=pswp__share-tooltip></div></div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button><div class=pswp__caption><div class=pswp__caption__center></div></div></div></div></div><header class=header-section><div class="intro-header no-img"><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><div class=post-heading><h1>DNS - 基礎實作</h1><span class=post-meta><i class="fas fa-calendar"></i>&nbsp;Posted on December 25, 2018
+&nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;5&nbsp;minutes
+&nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1027&nbsp;words
+&nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;</span></div></div></div></div></div></header><div class=container role=main><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><article role=main class=blog-post><p><img src=/images/2018/12/dns.png alt=DNS-Basic></p><p>想在辦公室裏頭架設一個區域網路, 然後作一個實驗用的 <code>快取 DNS</code>, 怎麼搞?</p><h1 id=story>Story</h1><p>確保 實驗用機器(VM Machine) 及 等下要設定的 DNS Server 在同一個網段, 且可以 ping 得到彼此, 且都可以連接到公網段(ping 8.8.8.8)</p><ul><li>VM Machine : <code>192.168.124.133/24</code> (以下簡稱 os7)</li><li>DNS Server : <code>192.168.124.64/24</code> (以下簡稱 dns7)</li></ul><p>此外, 網段內原本就在使用的 DNS:</p><ul><li>DNS Server : <code>192.168.2.115</code> (以下簡稱 dns0)</li></ul><h1 id=prerequest>Prerequest</h1><ul><li>IPv4 Routing 基本概念</li><li>DNS 查找機制的觀念</li><li>2 台同網段的實驗用 VM (底下範例我使用2台 CentOS7)</li></ul><p><em>Note: 把 DNS Server 與 DNS Client 架設在同網段未必是個好主意!!</em></p><h1 id=implementation>Implementation</h1><p>實作目標:</p><ol><li>快取 DNS</li><li>領域管轄 DNS</li></ol><h2 id=1-快取-dns>1. 快取 DNS</h2><p>dns7:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-sh data-lang=sh><span class=line><span class=cl><span class=c1>### packages &amp;&amp; firewall &amp;&amp; service</span>
+</span></span><span class=line><span class=cl><span class=nv>$#</span> yum install -y <span class=nb>bind</span> bind-chroot bind-utils
+</span></span><span class=line><span class=cl><span class=nv>$#</span> firewall-cmd --add-service<span class=o>=</span>dns
+</span></span><span class=line><span class=cl><span class=nv>$#</span> systemctl start named
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nv>$#</span> vim /etc/named.conf
+</span></span><span class=line><span class=cl>options <span class=o>{</span>
+</span></span><span class=line><span class=cl>    listen-on port <span class=m>53</span> <span class=o>{</span> any<span class=p>;</span> <span class=o>}</span><span class=p>;</span>     <span class=c1># 提供來自所有網路介面的請求作查詢</span>
+</span></span><span class=line><span class=cl>    allow-query     <span class=o>{</span> any<span class=p>;</span> <span class=o>}</span><span class=p>;</span>       <span class=c1># 誰可以對我作查詢</span>
+</span></span><span class=line><span class=cl>    recursion yes<span class=p>;</span>                  <span class=c1># DNS Client 向 DNS Server 查詢的模式</span>
+</span></span><span class=line><span class=cl>    forward only<span class=p>;</span>                   <span class=c1># 我的 DNS 僅作 forward (如此以來就不會用到「.」了)</span>
+</span></span><span class=line><span class=cl>    forwarders <span class=o>{</span>                    <span class=c1># 設定 「forward only」後, 要前往查詢的位置</span>
+</span></span><span class=line><span class=cl>        192.168.2.115<span class=p>;</span>              <span class=c1># 上層查找的 Name Server (區網用的 Caching DNS)</span>
+</span></span><span class=line><span class=cl>        168.95.1.1<span class=p>;</span>                 <span class=c1># 上層查找的 Name Server (中華電信的 Caching DNS)</span>
+</span></span><span class=line><span class=cl>    <span class=o>}</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=o>}</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=c1># ↑ 僅節錄部分</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nv>$#</span> systemctl restart named
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>### 向 dns0 詢問 google.com 的 A 紀錄</span>
+</span></span><span class=line><span class=cl><span class=nv>$#</span> dig google.com A
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=p>;</span> <span class=o>&lt;&lt;&lt;</span>&gt;&gt; DiG 9.9.4-RedHat-9.9.4-72.el7 <span class=o>&lt;&lt;&lt;</span>&gt;&gt; google.com A
+</span></span><span class=line><span class=cl><span class=p>;;</span> global options: +cmd
+</span></span><span class=line><span class=cl><span class=p>;;</span> Got answer:
+</span></span><span class=line><span class=cl><span class=p>;;</span> -&gt;&gt;HEADER<span class=o>&lt;&lt;&lt;</span>- opcode: QUERY, status: NOERROR, id: <span class=m>54356</span>
+</span></span><span class=line><span class=cl><span class=p>;;</span> flags: qr rd ra<span class=p>;</span> QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: <span class=m>1</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=p>;;</span> OPT PSEUDOSECTION:
+</span></span><span class=line><span class=cl><span class=p>;</span> EDNS: version: 0, flags:<span class=p>;</span> udp: <span class=m>1280</span>
+</span></span><span class=line><span class=cl><span class=p>;;</span> QUESTION SECTION:        <span class=c1># 向 DNS Server 提出的查詢</span>
+</span></span><span class=line><span class=cl><span class=p>;</span>google.com.                    IN      A
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=p>;;</span> ANSWER SECTION:          <span class=c1># DNS Server 回答</span>
+</span></span><span class=line><span class=cl>google.com.             <span class=m>55</span>      IN      A       216.58.200.46
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=p>;;</span> Query time: <span class=m>2</span> msec
+</span></span><span class=line><span class=cl><span class=p>;;</span> SERVER: 192.168.2.115#53<span class=o>(</span>192.168.2.115<span class=o>)</span>  <span class=c1># 透過 dns0 來查詢到的</span>
+</span></span><span class=line><span class=cl><span class=p>;;</span> WHEN: Tue Dec <span class=m>25</span> 16:59:49 CST <span class=m>2018</span>
+</span></span><span class=line><span class=cl><span class=p>;;</span> MSG SIZE  rcvd: <span class=m>55</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>### 向 Local DNS Server(dns7) 詢問 google.com 的 A 紀錄</span>
+</span></span><span class=line><span class=cl><span class=nv>$#</span> dig @localhost google.com A
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=p>;</span> <span class=o>&lt;&lt;&lt;</span>&gt;&gt; DiG 9.9.4-RedHat-9.9.4-72.el7 <span class=o>&lt;&lt;&lt;</span>&gt;&gt; @localhost google.com A
+</span></span><span class=line><span class=cl><span class=p>;</span> <span class=o>(</span><span class=m>2</span> servers found<span class=o>)</span>
+</span></span><span class=line><span class=cl><span class=p>;;</span> global options: +cmd
+</span></span><span class=line><span class=cl><span class=p>;;</span> Got answer:
+</span></span><span class=line><span class=cl><span class=p>;;</span> -&gt;&gt;HEADER<span class=o>&lt;&lt;&lt;</span>- opcode: QUERY, status: NOERROR, id: <span class=m>57245</span>
+</span></span><span class=line><span class=cl><span class=p>;;</span> flags: qr rd ra<span class=p>;</span> QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: <span class=m>1</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=p>;;</span> OPT PSEUDOSECTION:
+</span></span><span class=line><span class=cl><span class=p>;</span> EDNS: version: 0, flags:<span class=p>;</span> udp: <span class=m>4096</span>
+</span></span><span class=line><span class=cl><span class=p>;;</span> QUESTION SECTION:        <span class=c1># 向 DNS Server 提出的查詢</span>
+</span></span><span class=line><span class=cl><span class=p>;</span>google.com.                    IN      A
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=p>;;</span> ANSWER SECTION:          <span class=c1># DNS Server 回答</span>
+</span></span><span class=line><span class=cl>google.com.             <span class=m>299</span>     IN      A       216.58.200.46
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=p>;;</span> Query time: <span class=m>493</span> msec
+</span></span><span class=line><span class=cl><span class=p>;;</span> SERVER: ::1#53<span class=o>(</span>::1<span class=o>)</span>      <span class=c1># 透過 ::1 來查詢到的</span>
+</span></span><span class=line><span class=cl><span class=p>;;</span> WHEN: Tue Dec <span class=m>25</span> 17:00:46 CST <span class=m>2018</span>
+</span></span><span class=line><span class=cl><span class=p>;;</span> MSG SIZE  rcvd: <span class=m>55</span>
+</span></span></code></pre></div><p>os7:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-sh data-lang=sh><span class=line><span class=cl><span class=c1>### 向 dns0 藉由 dns 那台 來查詢 google.com 的 A 紀錄</span>
+</span></span><span class=line><span class=cl><span class=nv>$#</span> dig google.com A
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=p>;</span> <span class=o>&lt;&lt;&lt;</span>&gt;&gt; DiG 9.9.4-RedHat-9.9.4-61.el7 <span class=o>&lt;&lt;&lt;</span>&gt;&gt; google.com A
+</span></span><span class=line><span class=cl><span class=p>;;</span> global options: +cmd
+</span></span><span class=line><span class=cl><span class=p>;;</span> Got answer:
+</span></span><span class=line><span class=cl><span class=p>;;</span> -&gt;&gt;HEADER<span class=o>&lt;&lt;&lt;</span>- opcode: QUERY, status: NOERROR, id: <span class=m>39201</span>
+</span></span><span class=line><span class=cl><span class=p>;;</span> flags: qr rd ra<span class=p>;</span> QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: <span class=m>1</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=p>;;</span> OPT PSEUDOSECTION:
+</span></span><span class=line><span class=cl><span class=p>;</span> EDNS: version: 0, flags:<span class=p>;</span> udp: <span class=m>4096</span>
+</span></span><span class=line><span class=cl><span class=p>;;</span> QUESTION SECTION:
+</span></span><span class=line><span class=cl><span class=p>;</span>google.com.                    IN      A
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=p>;;</span> ANSWER SECTION:
+</span></span><span class=line><span class=cl>google.com.             <span class=m>80</span>      IN      A       216.58.200.46
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=p>;;</span> Query time: <span class=m>1</span> msec
+</span></span><span class=line><span class=cl><span class=p>;;</span> SERVER: 192.168.124.64#53<span class=o>(</span>192.168.124.64<span class=o>)</span>    <span class=c1># 透過 dns0 來查詢到的</span>
+</span></span><span class=line><span class=cl><span class=p>;;</span> WHEN: Tue Dec <span class=m>25</span> 17:04:25 CST <span class=m>2018</span>
+</span></span><span class=line><span class=cl><span class=p>;;</span> MSG SIZE  rcvd: <span class=m>55</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>### 向 dns7 詢問, dns7 代為跑腿去問 dns0 那台來查詢 google.com 的 A 紀錄</span>
+</span></span><span class=line><span class=cl><span class=nv>$#</span> dig @192.168.124.64 google.com A
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=p>;</span> <span class=o>&lt;&lt;&lt;</span>&gt;&gt; DiG 9.9.4-RedHat-9.9.4-61.el7 <span class=o>&lt;&lt;&lt;</span>&gt;&gt; @192.168.124.64 google.com A
+</span></span><span class=line><span class=cl><span class=p>;</span> <span class=o>(</span><span class=m>1</span> server found<span class=o>)</span>
+</span></span><span class=line><span class=cl><span class=p>;;</span> global options: +cmd
+</span></span><span class=line><span class=cl><span class=p>;;</span> Got answer:
+</span></span><span class=line><span class=cl><span class=p>;;</span> -&gt;&gt;HEADER<span class=o>&lt;&lt;&lt;</span>- opcode: QUERY, status: NOERROR, id: <span class=m>34288</span>
+</span></span><span class=line><span class=cl><span class=p>;;</span> flags: qr rd ra<span class=p>;</span> QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: <span class=m>1</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=p>;;</span> OPT PSEUDOSECTION:
+</span></span><span class=line><span class=cl><span class=p>;</span> EDNS: version: 0, flags:<span class=p>;</span> udp: <span class=m>4096</span>
+</span></span><span class=line><span class=cl><span class=p>;;</span> QUESTION SECTION:
+</span></span><span class=line><span class=cl><span class=p>;</span>google.com.                    IN      A
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=p>;;</span> ANSWER SECTION:
+</span></span><span class=line><span class=cl>google.com.             <span class=m>103</span>     IN      A       216.58.200.46
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=p>;;</span> Query time: <span class=m>1</span> msec
+</span></span><span class=line><span class=cl><span class=p>;;</span> SERVER: 192.168.124.64#53<span class=o>(</span>192.168.124.64<span class=o>)</span>    <span class=c1># 透過 dns7 來查詢到的</span>
+</span></span><span class=line><span class=cl><span class=p>;;</span> WHEN: Tue Dec <span class=m>25</span> 17:15:12 CST <span class=m>2018</span>
+</span></span><span class=line><span class=cl><span class=p>;;</span> MSG SIZE  rcvd: <span class=m>55</span>
+</span></span></code></pre></div><p>以上, 快取 DNS Server 完成!!</p><p>這樣有啥好處!? 我目前只知道方便管控對外連線的名稱解析&mldr; 詳情請可參考 <a href=http://linux.vbird.org/linux_server/0350dns.php>鳥哥DNS</a></p><h2 id=2-領域管轄-dns>2. 領域管轄 DNS</h2><p>目的: 擁有自己的名稱領域, Ex: <code>tony.com</code></p><p>將來我的機器們都可以註冊在這之下, 我就可以有一系列的 <code>mail.tony.com</code>, <code>www.tony.com</code>, <code>blog.tony.com</code>, &mldr;</p><p>dns7:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-sh data-lang=sh><span class=line><span class=cl><span class=nv>$#</span> vim /etc/named.conf
+</span></span><span class=line><span class=cl><span class=c1># 找到 「zone &#34;.&#34; IN { ... }; 」下一行, 增加領域資源紀錄</span>
+</span></span><span class=line><span class=cl>zone <span class=s2>&#34;orz.com&#34;</span> IN <span class=o>{</span>             <span class=c1># 此 DNS 來託管 「orz.com」這個領域</span>
+</span></span><span class=line><span class=cl>    <span class=nb>type</span> master<span class=p>;</span>                <span class=c1># 設定此 DNS 為 master</span>
+</span></span><span class=line><span class=cl>    file <span class=s2>&#34;named.orz.com&#34;</span><span class=p>;</span>       <span class=c1># 此領域的資源紀錄細節, 紀錄在 /var/named/named.orz.com</span>
+</span></span><span class=line><span class=cl><span class=o>}</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>### 增加領域資源紀錄</span>
+</span></span><span class=line><span class=cl><span class=nv>$#</span> vim /var/named/named.orz.com
+</span></span><span class=line><span class=cl><span class=nv>$TTL</span>    <span class=m>10</span>      <span class=c1># 來查詢的 DNS 可快取的時間 (秒)</span>
+</span></span><span class=line><span class=cl>@           IN  SOA     dns7.orz.com.   root.orz.com. <span class=o>(</span>     <span class=c1># Domain 的 管理者 dns7.orz.com. ; 信箱在 root@orz.com.</span>
+</span></span><span class=line><span class=cl>    <span class=m>2018122501</span>      <span class=c1># Serial</span>
+</span></span><span class=line><span class=cl>    <span class=m>30</span>              <span class=c1># Refresh</span>
+</span></span><span class=line><span class=cl>    <span class=m>20</span>              <span class=c1># Retry</span>
+</span></span><span class=line><span class=cl>    <span class=m>600</span>             <span class=c1># Expire</span>
+</span></span><span class=line><span class=cl>    <span class=m>10</span>              <span class=c1># Min TTL</span>
+</span></span><span class=line><span class=cl><span class=o>)</span>
+</span></span><span class=line><span class=cl>@           IN  NS      dns7.orz.com.       <span class=c1># @ 是 Domain 的意思; 此領域的管理者(FQDN)為 dns7.orz.com.</span>
+</span></span><span class=line><span class=cl>dns7        IN  A       192.168.124.64      <span class=c1># dns7(hostname) 這台電腦位於 192.168.124.64</span>
+</span></span><span class=line><span class=cl>os7         IN  A       192.168.124.133     <span class=c1># os7(hostname)  這台電腦位於 192.168.124.133</span>
+</span></span><span class=line><span class=cl>master      IN  CNAME   os7.orz.com.        <span class=c1># master(Canonical name) 這別名是指 os7</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># 修改完組態之後, 重啟 Server, 沒打錯字應該就沒問題啦!!</span>
+</span></span><span class=line><span class=cl><span class=nv>$#</span> systemctl restart named
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>##### --------------------- 好了, 以上把 DNS 正解的部分搞定了! ---------------------</span>
+</span></span><span class=line><span class=cl><span class=c1>##### 底下要開始做反解~ 如果要架設 Validate Mail Server, 則這是必須的~</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>### 設定主檔</span>
+</span></span><span class=line><span class=cl><span class=nv>$#</span> vim /etc/named.conf
+</span></span><span class=line><span class=cl><span class=c1># 在 「zone &#34;orz.com&#34; IN { ... };」 底下, 再新增一筆資源紀錄</span>
+</span></span><span class=line><span class=cl>zone <span class=s2>&#34;124.168.192.in-addr.arpa&#34;</span> IN <span class=o>{</span>
+</span></span><span class=line><span class=cl>    <span class=nb>type</span>    master<span class=p>;</span>
+</span></span><span class=line><span class=cl>    file    <span class=s2>&#34;named.192.168.124&#34;</span><span class=p>;</span>            <span class=c1># 資源紀錄資料庫位於 /var/named/named.192.168.124</span>
+</span></span><span class=line><span class=cl><span class=o>}</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>### 反解資源紀錄</span>
+</span></span><span class=line><span class=cl><span class=nv>$#</span> vim /var/named/named.192.168.124
+</span></span><span class=line><span class=cl><span class=nv>$TTL</span>    <span class=m>10</span>
+</span></span><span class=line><span class=cl>@           IN  SOA     dns7.orz.com.   root.orz.com. <span class=o>(</span>
+</span></span><span class=line><span class=cl>    <span class=m>2018122502</span>          <span class=c1># Serial 如果有作成 master/slave 架構, 記得更新版號</span>
+</span></span><span class=line><span class=cl>    <span class=m>30</span>
+</span></span><span class=line><span class=cl>    <span class=m>20</span>
+</span></span><span class=line><span class=cl>    <span class=m>600</span>
+</span></span><span class=line><span class=cl>    <span class=m>10</span>
+</span></span><span class=line><span class=cl><span class=o>)</span>
+</span></span><span class=line><span class=cl>@           IN  NS      dns7.orz.com.
+</span></span><span class=line><span class=cl><span class=m>64</span>          IN  PTR     dns7.orz.com.   <span class=c1># A 紀錄改為 PTR</span>
+</span></span><span class=line><span class=cl><span class=m>133</span>         IN  PTR     os7.orz.com.    <span class=c1># A 紀錄改為 PTR</span>
+</span></span><span class=line><span class=cl><span class=c1># 以上, 幾乎都與 「/var/named/named.orz.com」一樣, 但僅把 A 紀錄, 改成 PTR 紀錄</span>
+</span></span><span class=line><span class=cl><span class=c1># 另外, CNAME 別設定反解, 總之, FQDN01-&gt;IP 然後 IP-&gt; FQDN02, FQDN01 == FQDN02, 則表示反解成功</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nv>$#</span> systemctl restart named
+</span></span><span class=line><span class=cl><span class=c1># 鳥哥有說, 如果 service 可以正常啟動, 未必表示有成功執行, 保險一點, 去檢查 Log 吧</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nv>$#</span> vim /var/log/messages
+</span></span><span class=line><span class=cl>Dec <span class=m>25</span> 19:45:57 dns named<span class=o>[</span>47919<span class=o>]</span>: loading configuration from <span class=s1>&#39;/etc/named.conf&#39;</span>
+</span></span><span class=line><span class=cl><span class=c1># 中間 PASS 30 多行...</span>
+</span></span><span class=line><span class=cl>Dec <span class=m>25</span> 19:45:57 dns named<span class=o>[</span>47919<span class=o>]</span>: zone 124.168.192.in-addr.arpa/IN: loaded serial 2018122502Dec <span class=m>25</span> 19:45:57 dns named<span class=o>[</span>47919<span class=o>]</span>: zone
+</span></span><span class=line><span class=cl>Dec <span class=m>25</span> 19:45:57 dns named<span class=o>[</span>47919<span class=o>]</span>: zone orz.com/IN: loaded serial <span class=m>2018122502</span>
+</span></span><span class=line><span class=cl><span class=c1># 上面兩行, 表示有分別載入 124.168.192.in-addr.arpa 及 orz.com 的資源紀錄資料庫</span>
+</span></span><span class=line><span class=cl><span class=c1># 後面 PASS...</span>
+</span></span></code></pre></div><p>os7:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-sh data-lang=sh><span class=line><span class=cl><span class=c1>### 客戶端反查</span>
+</span></span><span class=line><span class=cl><span class=nv>$#</span> dig -x 192.168.124.133
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=p>;</span> <span class=o>&lt;&lt;&lt;</span>&gt;&gt; DiG 9.9.4-RedHat-9.9.4-61.el7 <span class=o>&lt;&lt;&lt;</span>&gt;&gt; -x 192.168.124.133
+</span></span><span class=line><span class=cl><span class=p>;;</span> global options: +cmd
+</span></span><span class=line><span class=cl><span class=p>;;</span> Got answer:
+</span></span><span class=line><span class=cl><span class=p>;;</span> -&gt;&gt;HEADER<span class=o>&lt;&lt;&lt;</span>- opcode: QUERY, status: NOERROR, id: <span class=m>17666</span>
+</span></span><span class=line><span class=cl><span class=p>;;</span> flags: qr aa rd ra<span class=p>;</span> QUERY: 1, ANSWER: 1, AUTHORITY: 1, ADDITIONAL: <span class=m>2</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=p>;;</span> OPT PSEUDOSECTION:
+</span></span><span class=line><span class=cl><span class=p>;</span> EDNS: version: 0, flags:<span class=p>;</span> udp: <span class=m>4096</span>
+</span></span><span class=line><span class=cl><span class=p>;;</span> QUESTION SECTION:
+</span></span><span class=line><span class=cl><span class=p>;</span>133.124.168.192.in-addr.arpa.  IN      PTR
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=p>;;</span> ANSWER SECTION:
+</span></span><span class=line><span class=cl>133.124.168.192.in-addr.arpa. <span class=m>10</span> IN     PTR     os7.orz.com.    <span class=c1># 查到自己這台的 PTR</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=p>;;</span> AUTHORITY SECTION:
+</span></span><span class=line><span class=cl>124.168.192.in-addr.arpa. <span class=m>10</span>    IN      NS      dns7.orz.com.
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=p>;;</span> ADDITIONAL SECTION:
+</span></span><span class=line><span class=cl>dns7.orz.com.           <span class=m>10</span>      IN      A       192.168.124.64
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=p>;;</span> Query time: <span class=m>10</span> msec
+</span></span><span class=line><span class=cl><span class=p>;;</span> SERVER: 192.168.124.64#53<span class=o>(</span>192.168.124.64<span class=o>)</span>    <span class=c1># 由 dns7 回應</span>
+</span></span><span class=line><span class=cl><span class=p>;;</span> WHEN: Tue Dec <span class=m>25</span> 20:44:27 CST <span class=m>2018</span>
+</span></span><span class=line><span class=cl><span class=p>;;</span> MSG SIZE  rcvd: <span class=m>117</span>
+</span></span></code></pre></div><p>之後不管是 dns7 或是 os7, 都可以經由 dns7 來詢問到 <code>dns7.orz.com</code>, <code>os7.orz.com</code>, <code>master.orz.com</code></p><p>領域管轄 DNS, 完成!!</p><div class=blog-tags><a href=https://blog.tonychoucc.com/tags/dns/>dns</a>&nbsp;</div><hr><section id=social-share><div class="list-inline footer-links"><div class=share-box aria-hidden=true><ul class=share><li><a href="//twitter.com/share?url=https%3a%2f%2fblog.tonychoucc.com%2fpost%2f2018%2f2018-12-25-dns_basic.html&amp;text=DNS%20-%20%e5%9f%ba%e7%a4%8e%e5%af%a6%e4%bd%9c&amp;via=" target=_blank title="Share on Twitter"><i class="fab fa-twitter"></i></a></li><li><a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fblog.tonychoucc.com%2fpost%2f2018%2f2018-12-25-dns_basic.html" target=_blank title="Share on Facebook"><i class="fab fa-facebook"></i></a></li><li><a href="//reddit.com/submit?url=https%3a%2f%2fblog.tonychoucc.com%2fpost%2f2018%2f2018-12-25-dns_basic.html&amp;title=DNS%20-%20%e5%9f%ba%e7%a4%8e%e5%af%a6%e4%bd%9c" target=_blank title="Share on Reddit"><i class="fab fa-reddit"></i></a></li><li><a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fblog.tonychoucc.com%2fpost%2f2018%2f2018-12-25-dns_basic.html&amp;title=DNS%20-%20%e5%9f%ba%e7%a4%8e%e5%af%a6%e4%bd%9c" target=_blank title="Share on LinkedIn"><i class="fab fa-linkedin"></i></a></li><li><a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fblog.tonychoucc.com%2fpost%2f2018%2f2018-12-25-dns_basic.html&amp;title=DNS%20-%20%e5%9f%ba%e7%a4%8e%e5%af%a6%e4%bd%9c" target=_blank title="Share on StumbleUpon"><i class="fab fa-stumbleupon"></i></a></li><li><a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fblog.tonychoucc.com%2fpost%2f2018%2f2018-12-25-dns_basic.html&amp;description=DNS%20-%20%e5%9f%ba%e7%a4%8e%e5%af%a6%e4%bd%9c" target=_blank title="Share on Pinterest"><i class="fab fa-pinterest"></i></a></li></ul></div></div></section><h4 class=see-also>See also</h4><ul><li><a href=/post/2019/2019-01-05-mail-server.html>Mail Server - 發送信件至公網域</a></li><li><a href=/post/2018/2018-12-28-dns_public-subdomain.html>DNS - 合法子網域</a></li><li><a href=/post/2018/2018-12-27-dns_sub-domain.html>DNS - 子網域自治區</a></li><li><a href=/post/2018/2018-12-26-dns_master-slave.html>DNS - master/slave 架構</a></li></ul></article><ul class="pager blog-pager"><li class=previous><a href=https://blog.tonychoucc.com/post/2018/2018-11-14-remove-lvm-swap.html data-toggle=tooltip data-placement=top title="移除 LVM-SWAP">&larr; Previous Post</a></li><li class=next><a href=https://blog.tonychoucc.com/post/2018/2018-12-26-dns_master-slave.html data-toggle=tooltip data-placement=top title="DNS - master/slave 架構">Next Post &rarr;</a></li></ul><div class=disqus-comments><button id=show-comments class="btn btn-default" type=button>Show <span class=disqus-comment-count data-disqus-url=https://blog.tonychoucc.com/post/2018/2018-12-25-dns_basic.html>comments</span></button><div id=disqus_thread></div><script type=text/javascript>var disqus_config=function(){this.page.url="https://blog.tonychoucc.com/post/2018/2018-12-25-dns_basic.html"}</script></div></div></div></div><footer><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><ul class="list-inline text-center footer-links"><li><a href=https://www.facebook.com/cool21540125 title=Facebook><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
+<i class="fab fa-facebook fa-stack-1x fa-inverse"></i></span></a></li><li><a href=https://github.com/cool21540125 title=GitHub><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
+<i class="fab fa-github fa-stack-1x fa-inverse"></i></span></a></li><li><a href=https://gitlab.com/cool21540125 title=GitLab><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
+<i class="fab fa-gitlab fa-stack-1x fa-inverse"></i></span></a></li><li><a href=https://stackoverflow.com/users/7751061/tony-chou title=StackOverflow><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
+<i class="fab fa-stack-overflow fa-stack-1x fa-inverse"></i></span></a></li><li><a href title=RSS><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
+<i class="fas fa-rss fa-stack-1x fa-inverse"></i></span></a></li></ul><p class="credits copyright text-muted">&nbsp;&bull;&nbsp;&copy;
+2023
+&nbsp;&bull;&nbsp;
+<a href=https://blog.tonychoucc.com>朝向 SRE 邁進</a></p><p class="credits theme-by text-muted"><a href=https://gohugo.io>Hugo v0.119.0</a> powered &nbsp;&bull;&nbsp; Theme <a href=https://github.com/halogenica/beautifulhugo>Beautiful Hugo</a> adapted from <a href=https://deanattali.com/beautiful-jekyll/>Beautiful Jekyll</a></p></div></div></div></footer><script src=https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js integrity=sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4 crossorigin=anonymous></script>
+<script src=https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js integrity=sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa crossorigin=anonymous></script>
+<script src=https://code.jquery.com/jquery-3.5.1.slim.min.js integrity=sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj crossorigin=anonymous></script>
+<script src=https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js integrity=sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa crossorigin=anonymous></script>
+<script src=https://blog.tonychoucc.com/js/main.js></script>
+<script src=https://blog.tonychoucc.com/js/highlight.min.js></script>
+<script>hljs.initHighlightingOnLoad()</script><script>$(document).ready(function(){$("pre.chroma").css("padding","0")})</script><script>renderMathInElement(document.body)</script><script src=https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js integrity=sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js integrity=sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q crossorigin=anonymous></script><script src=https://blog.tonychoucc.com/js/load-photoswipe.js></script>
+<script type=text/javascript>$(function(){$("#show-comments").on("click",function(){var e="blog-tonychoucc-com";(function(){var t=document.createElement("script");t.type="text/javascript",t.async=!0,t.src="//"+e+".disqus.com/embed.js",(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(t)})(),$(this).hide()})})</script><script id=dsq-count-scr src=//blog-tonychoucc-com.disqus.com/count.js async></script></body></html>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>docker-networking on 朝向 SRE 邁進</title><link>https://blog.tonychoucc.com/tags/docker-networking.html</link><description>Recent content in docker-networking on 朝向 SRE 邁進</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 19 Dec 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.tonychoucc.com/tags/docker-networking/index.xml" rel="self" type="application/rss+xml"/><item><title>Docker Networking</title><link>https://blog.tonychoucc.com/post/2019/2019-12-19-docker-networking-bridge.html</link><pubDate>Thu, 19 Dec 2019 00:00:00 +0000</pubDate><guid>https://blog.tonychoucc.com/post/2019/2019-12-19-docker-networking-bridge.html</guid><description>&lt;p>&lt;img src="https://blog.tonychoucc.com/images/2019/DockerNetworking.png" alt="DockerNetworking">&lt;/p>
+&lt;p>Docker Networking Drivers 可區分成底下 5 種：&lt;/p>
+&lt;ol>
+&lt;li>bridge (預設)&lt;/li>
+&lt;li>host - 可直接與 Docker Host 映射所有 ports (因只有 Linux 可使用, 故本文略)&lt;/li>
+&lt;li>overlay - 給 Swarm 使用 (因比較進階, 故本文略)&lt;/li>
+&lt;li>macvlan - 可在 Container 內設定 Mac Address (比較涉及網路底層, 故本文略)&lt;/li>
+&lt;li>none - 關閉 Container 的 Networking (因為太自閉了, 故本文略)&lt;/li>
+&lt;/ol>
+&lt;p>底下詳述 Docker Bridge Networks&lt;/p></description></item></channel></rss>
