@@ -8,36 +8,56 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-22.04
-    concurrency:
-      group: ${{ github.workflow }}-${{ github.ref }}
+    permissions:
+      contents: read
+      id-token: write
+
     steps:
+      - name: Decide Environment
+        id: trigger-env
+        shell: bash
+        run: |
+          if [[ "${{ github.ref }}" == "refs/heads/uat" ]];then
+            echo "AWS_DISTRIBUTION_ID=${{ secrets.UAT_AWS_DISTRIBUTION_ID }}" >> "$GITHUB_OUTPUT"
+            echo "AWS_ACCOUNT_ID=${{ secrets.UAT_AWS_ACCOUNT_ID }}" >> "$GITHUB_OUTPUT"
+          elif [[ "${{ github.ref }}" == "refs/heads/master" ]]; then
+            echo "AWS_DISTRIBUTION_ID=${{ secrets.PRD_AWS_DISTRIBUTION_ID }}" >> "$GITHUB_OUTPUT"
+            echo "AWS_ACCOUNT_ID=${{ secrets.PRD_AWS_ACCOUNT_ID }}" >> "$GITHUB_OUTPUT"
+          else
+            echo "nothing happened"
+            exit 0
+          fi
+
       - name: Checkout
         uses: actions/checkout@v4
         with:
           submodules: true
-          fetch-depth: 0
+          fetch-depth: 1
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::${{ env.AWS_ACCOUNT_ID }}:role/${{ vars.AWS_ROLE }}
+          aws-region: ${{ vars.AWS_REGION }}
+        env:
+          AWS_ACCOUNT_ID: ${{ steps.trigger-env.outputs.AWS_ACCOUNT_ID }}
+        timeout-minutes: 1
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
           hugo-version: '0.121.0'
-          # extended: true
 
       - name: Build
         run: hugo --minify
   
       - name: Upload to S3
-        shell: bash
         run: |
-          aws s3 sync public s3://${{ vars.AWS_S3_BUCKET_NAME }}/
+          aws s3 sync ./public s3://${{ vars.AWS_S3_BUCKET_NAME }} --delete
+        env:
+          AWS_DEFAULT_REGION: ${{ vars.AWS_REGION }}
 
-      # - uses: shinyinc/action-aws-cli@v1.2
-      # - run: aws s3 sync build s3://${{ secrets.AWS_S3_BUCKET_NAME }}/
-      #   env:
-      #     AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      #     AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-
-      # - run: aws cloudfront create-invalidation --distribution-id ${{ secrets.AWS_DISTRIBUTION_ID }} --paths "/index.html"
-      #   env:
-      #     AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      #     AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      - name: Create AWS CloudFront Invalidation
+        run: aws cloudfront create-invalidation --distribution-id ${{ env.AWS_DISTRIBUTION_ID }} --paths "/"
+        env:
+          AWS_DISTRIBUTION_ID: ${{ steps.trigger-env.outputs.AWS_DISTRIBUTION_ID }}
