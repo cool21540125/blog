@@ -1,9 +1,9 @@
 
-## Goal for 2023
+## Goal for 2024
 
 - AWS SOA
-- AWS DVA (Got)
-- K8s CKA
-- TOEIC Golden
+- AWS DevOps
+- 西班牙文
+- Youtube 斜槓
 
-having fun and easy learning~
+Never too old to learn
