@@ -20,15 +20,24 @@ jobs:
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
-          hugo-version: '0.119.0'
+          hugo-version: '0.121.0'
           # extended: true
 
       - name: Build
         run: hugo --minify
+  
+      - name: Upload to S3
+        shell: bash
+        run: |
+          aws s3 sync public s3://${{ vars.AWS_S3_BUCKET_NAME }}/
 
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        if: github.ref == 'refs/heads/uat'
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
+      # - uses: shinyinc/action-aws-cli@v1.2
+      # - run: aws s3 sync build s3://${{ secrets.AWS_S3_BUCKET_NAME }}/
+      #   env:
+      #     AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      #     AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+      # - run: aws cloudfront create-invalidation --distribution-id ${{ secrets.AWS_DISTRIBUTION_ID }} --paths "/index.html"
+      #   env:
+      #     AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      #     AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
