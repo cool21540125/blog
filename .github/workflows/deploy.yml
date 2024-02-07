@@ -29,7 +29,8 @@ jobs:
             echo "BUCKET_NAME=${{ vars.UAT_AWS_S3_BUCKET_NAME }}" >> "$GITHUB_OUTPUT"
             sed -i "s/${{ vars.PRD_DOMAIN }}/${{ vars.UAT_DOMAIN }}/" config.toml
             echo "" >> content/_index.md
-            echo "This is UAT" >> content/_index.md
+            echo "" >> content/_index.md
+            echo "# This is UAT" >> content/_index.md
 
           elif [[ "${{ github.ref }}" == "refs/heads/master" ]]; then
             echo "AWS_DISTRIBUTION_ID=${{ secrets.PRD_AWS_DISTRIBUTION_ID }}" >> "$GITHUB_OUTPUT"
