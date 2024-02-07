@@ -13,26 +13,33 @@ jobs:
       id-token: write
 
     steps:
-      - name: Decide Environment
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+          fetch-depth: 1
+
+      - name: Environment Check
         id: trigger-env
         shell: bash
         run: |
           if [[ "${{ github.ref }}" == "refs/heads/uat" ]];then
             echo "AWS_DISTRIBUTION_ID=${{ secrets.UAT_AWS_DISTRIBUTION_ID }}" >> "$GITHUB_OUTPUT"
             echo "AWS_ACCOUNT_ID=${{ secrets.UAT_AWS_ACCOUNT_ID }}" >> "$GITHUB_OUTPUT"
+            echo "BUCKET_NAME=${{ vars.UAT_AWS_S3_BUCKET_NAME }}" >> "$GITHUB_OUTPUT"
+            sed -i "s/${{ vars.PRD_DOMAIN }}/${{ vars.UAT_DOMAIN }}/" config.toml
+            echo "" >> content/_index.md
+            echo "This is UAT" >> content/_index.md
+
           elif [[ "${{ github.ref }}" == "refs/heads/master" ]]; then
             echo "AWS_DISTRIBUTION_ID=${{ secrets.PRD_AWS_DISTRIBUTION_ID }}" >> "$GITHUB_OUTPUT"
             echo "AWS_ACCOUNT_ID=${{ secrets.PRD_AWS_ACCOUNT_ID }}" >> "$GITHUB_OUTPUT"
+            echo "BUCKET_NAME=${{ vars.PRD_AWS_S3_BUCKET_NAME }}" >> "$GITHUB_OUTPUT"
+
           else
             echo "nothing happened"
             exit 0
           fi
-
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          submodules: true
-          fetch-depth: 1
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
@@ -52,10 +59,11 @@ jobs:
         run: hugo --minify
   
       - name: Upload to S3
-        run: |
-          aws s3 sync ./public s3://${{ vars.AWS_S3_BUCKET_NAME }} --delete
         env:
+          BUCKET_NAME: ${{ steps.trigger-env.outputs.BUCKET_NAME }}
           AWS_DEFAULT_REGION: ${{ vars.AWS_REGION }}
+        run: |
+          aws s3 sync ./public s3://${{ env.BUCKET_NAME }} --delete
 
       - name: Create AWS CloudFront Invalidation
         run: aws cloudfront create-invalidation --distribution-id ${{ env.AWS_DISTRIBUTION_ID }} --paths "/"

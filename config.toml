@@ -6,7 +6,7 @@ pygmentsStyle = "trac"
 pygmentsUseClasses = true
 pygmentsCodeFences = true
 pygmentsCodefencesGuessSyntax = true
-uglyurls = true
+uglyurls = false
 #pygmentsUseClassic = true
 #pygmentOptions = "linenos=inline"
 disqusShortname = "blog-tonychoucc-com"
