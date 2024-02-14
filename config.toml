@@ -92,18 +92,18 @@ weight = 3
 
 [[menu.main]]
 name = "About"
-url = "/page/about.html"
+url = "/page/about/index.html"
 weight = 3
 
 [[menu.main]]
 parent = "misc"
 name = "Nightmare"
-url = "/page/nightmare2022.html"
+url = "/page/nightmare2022/index.html"
 weight = 4
 
 [[menu.main]]
 name = "Tags"
-url = "tags.html"
+url = "tags/index.html"
 weight = 5
 
 # [[menu.main]]
