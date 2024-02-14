@@ -5,14 +5,9 @@ dev:
 
 .PHONY: build
 build:
-	hugo -v
-
-.PHONY: nginx
-nginx:
-	rm -rf public && \
-	hugo && \
-	docker run -p 80:80 -d --name blog-nginx -v "${PWD}/public:/usr/share/nginx/html/" nginx:alpine
+	rm -rf public
+	hugo --minify -v
 
 .PHONY: clean
 clean:
-	rm -rf public && docker rm -f blog-nginx
+	rm -rf public
