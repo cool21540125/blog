@@ -16,8 +16,8 @@ drafts: false
 ## Personality
 
 - Facing problems positively, and seldom avoid them
-- Highly enthusiasm for learning information technology
-- Tend to tell the truth instead of good words
+- Highly enthusiastic about learning information technology
+- Tends to be truthful rather than saying what others want to hear
 - Patient with communication and happy to help others
 - Love to share knowldege with others
 
@@ -45,54 +45,57 @@ drafts: false
     - PostgreSQL
     - Redis
     - RabbitMQ
-- before 2019 (Developer)
     - jQuery
-    - Python
     - CentOS7
-- before 2017 (Still NOT an Engineer)
+- before 2017 (Financial researcher)
     - VBA
 
 
 ## Training
 
-1. GJUN(巨匠電腦)(2016/01-2016/03) : SQL Server 2014
+1. 2016/01-2016/03 : (GJUN) SQL Server 2014
     - In addition to SQL Server, also took part in almost all free basic courses, like C#, Java, Javascript, C++, networking
     - At least, I know how to coding more OOP
-2. III(資策會)(2017/02-2017/08) : Big Data Analysis
+2. 2017/02-2017/08 : (III) Big Data Analysis
     - Programming Language : Java, Python, Javascript
     - Database Knowledge : MySQL, MongoDB, Redis
     - Operating System : CentOS, Ubuntu
     - and a lot.....(Hadoop eco-system, ELK, IOT, R analysis, Data mining, web crawler, ...)
-3. uuu(恆逸教育訓練中心)(2018/05-2018/06) : Network Infrastructure and Networking Service
+3. 2018/05-2018/06 : (uuu) Network Infrastructure and Networking Service
     - Basic networking concept, at least I know what is sub-networking and CIDR, and how to implement them on local VM.
-    - RedHat-RHCSA - 2018/11
-    <img src="/images/tony-RHCSA.png" width="50%">
-4. uuu(恆逸教育訓練中心)(2018/07-2018/10) : RHCE course
+4. 2018/07-2018/10 : (uuu) RHCE course
     - Basic skill for managing Red Hat Enterprise Linux, ex: manage Host-base Firewall, SELinux, System Permission, and so on.
     - Basic skill for developing on Red Hat Enterprise Linux, ex: Writing Shell Scripts, Config for web service and database service, and so on.
-    - RedHat-RHCE - 2018/12
+    - 2018/11 : RedHat-RHCSA
+    <img src="/images/tony-RHCSA.png" width="50%">
+    - 2018/12 : RedHat-RHCE
     <img src="/images/tony-RHCE.png" width="50%">
-5. gcp(2022/08) : GCP Fundamental Training
+5. 2022/08 : GCP Fundamental Training
     - Basic use of Compute Engine, CloudSQL, GAE, GKE, Cloud Monitoring
     <img src="/images/tony-GCP-training.png" width="50%">
-6. aws(2022/05~2022/09) : AWS Solution Architecture Associate
-    - AWS-SAA - 2022/08
+6. 2022/08 : AWS Certified Solutions Architect - Associate
     <img src="/images/tony-SAA.png" width="50%">
-7. aws(2022/09~2023/02) : AWS Developer Associate
-    - AWS-SAA - 2023/02
+7. 2023/02 : AWS Certified Developer - Associate
     <img src="/images/tony-DVA.png" width="50%">
+8. 2024/02 : AWS Certified SysOps Administrator - Associate
+    <img src="/images/tony-SOA.png" width="50%">
 
 
 ## Working Experience
 
 - Since 2022/09, DevOps Engineer
-    - Using helm and GitlabCI to build our APP
-    - CocosCreator automation build
-    - DataDog monitoring alert, notify to Slack
+    - Experienced in understanding and optimizing operational workflows within and across different teams, with a focus on automating tedious tasks and reducing product delivery cycles
+        - These teams include : backend team, web team, ios team, android team, algorithm team
+    - Use Bitbucket Pipeline for automating the deployment of frontend web pages to Vercel and On-Premise Server
+    - Use Github Actions for automation the deployment of backend services to AWS ECS
+    - Use Jenkins for automation the release of iOS and Android apps to Firebase / Play Store / App Store Connect
+    - Skilled in setting up appropriate monitoring alerts and proficient in swiftly resolving issues in abnormal situations
+    - Integrated existing codegen processes to facilitate smoother collaboration between teams
+    - Established seamless integration between internationalization copy and source code
 - Since 2020/11, Operation Engineer
     - Deploy and maintain various services using Jenkins
     - Half of services maintain by docker
-    - Monitoring system and services' health via zabbix
+    - Monitoring system and service health via zabbix
 - Since 2019/04, Python Developer
     - Monitoring Linux OS: firewalld, process, filesystem, etc
     - Crawler JKB monitoring data into our system for analysis usage
