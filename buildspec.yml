@@ -15,7 +15,6 @@ phases:
       - git submodule update --recursive
       - echo "==========================="
       - echo "In pre_build phase.."
-      - echo "# This is uat" > content/_index.md
       - echo "Current directory is ${CODEBUILD_SRC_DIR}"
       - echo "****** prd URL ******"
       - echo "$(head -n 1 config.toml)"
