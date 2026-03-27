@@ -71,3 +71,9 @@ jobs:
         run: aws cloudfront create-invalidation --distribution-id ${{ env.AWS_DISTRIBUTION_ID }} --paths "/"
         env:
           AWS_DISTRIBUTION_ID: ${{ steps.trigger-env.outputs.AWS_DISTRIBUTION_ID }}
+
+      - name: Notify
+        uses: snow-actions/line-notify@v1.1.0
+        with:
+          access_token: ${{ secrets.LINE_ACCESS_TOKEN }}
+          message: some message
